@@ -1,0 +1,267 @@
+2013-01-14 00:44:28.160 [warning] <0.83.0> OS_MON (memsup) timeout, no data collected
+
+2013-01-14 03:47:58.494 [info] <0.55.0> alarm_handler: {clear,system_memory_high_watermark}
+2013-01-14 09:02:27.076 [warning] <0.83.0> OS_MON (memsup) timeout, no data collected
+
+2013-01-14 09:17:57.122 [info] <0.55.0> alarm_handler: {set,{system_memory_high_watermark,[]}}
+2013-01-14 09:19:57.126 [info] <0.55.0> alarm_handler: {clear,system_memory_high_watermark}
+2013-01-14 09:20:57.129 [info] <0.55.0> alarm_handler: {set,{system_memory_high_watermark,[]}}
+2013-01-14 09:21:57.131 [info] <0.55.0> alarm_handler: {clear,system_memory_high_watermark}
+2013-01-14 09:24:57.135 [info] <0.55.0> alarm_handler: {set,{system_memory_high_watermark,[]}}
+2013-01-14 22:18:50.042 [info] <0.7.0> Application lager started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.058 [info] <0.7.0> Application sasl started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.060 [info] <0.7.0> Application crypto started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.061 [info] <0.7.0> Application public_key started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.068 [info] <0.7.0> Application ssl started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.073 [info] <0.7.0> Application riak_sysmon started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.083 [info] <0.7.0> Application os_mon started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.100 [info] <0.7.0> Application runtime_tools started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.154 [info] <0.7.0> Application erlang_js started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.176 [info] <0.7.0> Application inets started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.179 [info] <0.7.0> Application mochiweb started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.187 [info] <0.7.0> Application webmachine started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.187 [info] <0.7.0> Application basho_stats started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.196 [info] <0.7.0> Application bitcask started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:50.470 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_core,vnode_routing} = proxy
+2013-01-14 22:18:50.872 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_core,staged_joins} = true
+2013-01-14 22:18:51.060 [info] <0.7.0> Application riak_core started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:51.067 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_pipe,trace_format} = ordsets
+2013-01-14 22:18:51.570 [info] <0.293.0>@riak_core:wait_for_application:450 Waiting for application riak_pipe to start (0 seconds).
+2013-01-14 22:18:51.717 [info] <0.7.0> Application riak_pipe started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:51.772 [info] <0.293.0>@riak_core:wait_for_application:444 Wait complete for application riak_pipe (0 seconds)
+2013-01-14 22:18:52.150 [info] <0.7.0> Application riak_api started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:52.741 [info] <0.386.0>@riak_core:wait_for_service:470 Waiting for service riak_kv to start (0 seconds)
+2013-01-14 22:18:52.827 [info] <0.403.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.403.0>)
+2013-01-14 22:18:52.830 [info] <0.404.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.404.0>)
+2013-01-14 22:18:52.833 [info] <0.405.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.405.0>)
+2013-01-14 22:18:52.837 [info] <0.406.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.406.0>)
+2013-01-14 22:18:52.840 [info] <0.407.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.407.0>)
+2013-01-14 22:18:52.843 [info] <0.408.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.408.0>)
+2013-01-14 22:18:52.846 [info] <0.409.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.409.0>)
+2013-01-14 22:18:52.848 [info] <0.410.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.410.0>)
+2013-01-14 22:18:52.851 [info] <0.412.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.412.0>)
+2013-01-14 22:18:52.855 [info] <0.413.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.413.0>)
+2013-01-14 22:18:52.858 [info] <0.414.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.414.0>)
+2013-01-14 22:18:52.861 [info] <0.415.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.415.0>)
+2013-01-14 22:18:52.864 [info] <0.416.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.416.0>)
+2013-01-14 22:18:52.867 [info] <0.417.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.417.0>)
+2013-01-14 22:18:52.869 [info] <0.419.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_hook) host starting (<0.419.0>)
+2013-01-14 22:18:52.872 [info] <0.420.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_hook) host starting (<0.420.0>)
+2013-01-14 22:18:52.872 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,vnode_vclocks} = true
+2013-01-14 22:18:52.995 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,legacy_keylisting} = false
+2013-01-14 22:18:53.137 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,listkeys_backpressure} = true
+2013-01-14 22:18:53.250 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,index_backpressure} = true
+2013-01-14 22:18:53.712 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,mapred_system} = pipe
+2013-01-14 22:18:53.980 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,mapred_2i_pipe} = true
+2013-01-14 22:18:54.385 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,anti_entropy} = enabled_v1
+2013-01-14 22:18:54.870 [info] <0.583.0>@riak_core:wait_for_application:450 Waiting for application riak_kv to start (0 seconds).
+2013-01-14 22:18:55.271 [info] <0.7.0> Application riak_kv started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:55.274 [info] <0.583.0>@riak_core:wait_for_application:444 Wait complete for application riak_kv (0 seconds)
+2013-01-14 22:18:55.439 [info] <0.7.0> Application merge_index started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:55.445 [info] <0.7.0> Application riak_search started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:55.451 [info] <0.7.0> Application cluster_info started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:55.458 [info] <0.7.0> Application riak_control started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:55.458 [info] <0.7.0> Application erlydtl started on node 'riak2@127.0.0.1'
+2013-01-14 22:18:56.529 [info] <0.386.0>@riak_core:wait_for_service:464 Wait complete for service riak_kv (3 seconds)
+2013-01-14 22:21:56.581 [info] <0.2263.0> Merged ["./data/bitcask/205523667749658222872393179600727299639115513856",[{vnode_vclocks,true},{included_applications,[]},{allow_strfun,false},{reduce_js_vm_count,6},{anti_entropy_build_limit,{1,3600000}},{storage_backend,riak_kv_bitcask_backend},{hook_js_vm_count,2},{anti_entropy_leveldb_opts,[{write_buffer_size,4194304},{max_open_files,20}]},{listkeys_backpressure,true},{anti_entropy,{on,[]}},{mapred_name,"mapred"},{stats_urlpath,"stats"},{legacy_stats,true},{js_thread_stack,16},{anti_entropy_data_dir,"./data/anti_entropy"},{anti_entropy_expire,604800000},{anti_entropy_concurrency,2},{add_paths,[]},{anti_entropy_tick,15000},{http_url_encoding,on},{map_js_vm_count,8},{mapred_2i_pipe,true},{js_max_vm_mem,8},{vnode_mailbox_limit,{1,5000}},{read_write,true}],["./data/bitcask/205523667749658222872393179600727299639115513856/1.bitcask.data"]] in 0.364892 seconds.
+
+2013-01-14 22:21:56.782 [info] <0.2268.0> Merged ["./data/bitcask/479555224749202520035584085735030365824602865664",[{vnode_vclocks,true},{included_applications,[]},{allow_strfun,false},{reduce_js_vm_count,6},{anti_entropy_build_limit,{1,3600000}},{storage_backend,riak_kv_bitcask_backend},{hook_js_vm_count,2},{anti_entropy_leveldb_opts,[{write_buffer_size,4194304},{max_open_files,20}]},{listkeys_backpressure,true},{anti_entropy,{on,[]}},{mapred_name,"mapred"},{stats_urlpath,"stats"},{legacy_stats,true},{js_thread_stack,16},{anti_entropy_data_dir,"./data/anti_entropy"},{anti_entropy_expire,604800000},{anti_entropy_concurrency,2},{add_paths,[]},{anti_entropy_tick,15000},{http_url_encoding,on},{map_js_vm_count,8},{mapred_2i_pipe,true},{js_max_vm_mem,8},{vnode_mailbox_limit,{1,5000}},{read_write,true}],["./data/bitcask/479555224749202520035584085735030365824602865664/1.bitcask.data"]] in 0.201484 seconds.
+
+2013-01-14 22:21:57.051 [info] <0.2273.0> Merged ["./data/bitcask/753586781748746817198774991869333432010090217472",[{vnode_vclocks,true},{included_applications,[]},{allow_strfun,false},{reduce_js_vm_count,6},{anti_entropy_build_limit,{1,3600000}},{storage_backend,riak_kv_bitcask_backend},{hook_js_vm_count,2},{anti_entropy_leveldb_opts,[{write_buffer_size,4194304},{max_open_files,20}]},{listkeys_backpressure,true},{anti_entropy,{on,[]}},{mapred_name,"mapred"},{stats_urlpath,"stats"},{legacy_stats,true},{js_thread_stack,16},{anti_entropy_data_dir,"./data/anti_entropy"},{anti_entropy_expire,604800000},{anti_entropy_concurrency,2},{add_paths,[]},{anti_entropy_tick,15000},{http_url_encoding,on},{map_js_vm_count,8},{mapred_2i_pipe,true},{js_max_vm_mem,8},{vnode_mailbox_limit,{1,5000}},{read_write,true}],["./data/bitcask/753586781748746817198774991869333432010090217472/2.bitcask.data"]] in 0.269067 seconds.
+
+2013-01-14 22:21:57.232 [info] <0.2277.0> Merged ["./data/bitcask/1027618338748291114361965898003636498195577569280",[{vnode_vclocks,true},{included_applications,[]},{allow_strfun,false},{reduce_js_vm_count,6},{anti_entropy_build_limit,{1,3600000}},{storage_backend,riak_kv_bitcask_backend},{hook_js_vm_count,2},{anti_entropy_leveldb_opts,[{write_buffer_size,4194304},{max_open_files,20}]},{listkeys_backpressure,true},{anti_entropy,{on,[]}},{mapred_name,"mapred"},{stats_urlpath,"stats"},{legacy_stats,true},{js_thread_stack,16},{anti_entropy_data_dir,"./data/anti_entropy"},{anti_entropy_expire,604800000},{anti_entropy_concurrency,2},{add_paths,[]},{anti_entropy_tick,15000},{http_url_encoding,on},{map_js_vm_count,8},{mapred_2i_pipe,true},{js_max_vm_mem,8},{vnode_mailbox_limit,{1,5000}},{read_write,true}],["./data/bitcask/1027618338748291114361965898003636498195577569280/1.bitcask.data"]] in 0.180164 seconds.
+
+2013-01-14 22:21:57.499 [info] <0.2281.0> Merged ["./data/bitcask/1118962191081472546749696200048404186924073353216",[{vnode_vclocks,true},{included_applications,[]},{allow_strfun,false},{reduce_js_vm_count,6},{anti_entropy_build_limit,{1,3600000}},{storage_backend,riak_kv_bitcask_backend},{hook_js_vm_count,2},{anti_entropy_leveldb_opts,[{write_buffer_size,4194304},{max_open_files,20}]},{listkeys_backpressure,true},{anti_entropy,{on,[]}},{mapred_name,"mapred"},{stats_urlpath,"stats"},{legacy_stats,true},{js_thread_stack,16},{anti_entropy_data_dir,"./data/anti_entropy"},{anti_entropy_expire,604800000},{anti_entropy_concurrency,2},{add_paths,[]},{anti_entropy_tick,15000},{http_url_encoding,on},{map_js_vm_count,8},{mapred_2i_pipe,true},{js_max_vm_mem,8},{vnode_mailbox_limit,{1,5000}},{read_write,true}],["./data/bitcask/1118962191081472546749696200048404186924073353216/1.bitcask.data"]] in 0.267904 seconds.
+
+2013-01-14 22:21:57.770 [info] <0.2285.0> Merged ["./data/bitcask/1210306043414653979137426502093171875652569137152",[{vnode_vclocks,true},{included_applications,[]},{allow_strfun,false},{reduce_js_vm_count,6},{anti_entropy_build_limit,{1,3600000}},{storage_backend,riak_kv_bitcask_backend},{hook_js_vm_count,2},{anti_entropy_leveldb_opts,[{write_buffer_size,4194304},{max_open_files,20}]},{listkeys_backpressure,true},{anti_entropy,{on,[]}},{mapred_name,"mapred"},{stats_urlpath,"stats"},{legacy_stats,true},{js_thread_stack,16},{anti_entropy_data_dir,"./data/anti_entropy"},{anti_entropy_expire,604800000},{anti_entropy_concurrency,2},{add_paths,[]},{anti_entropy_tick,15000},{http_url_encoding,on},{map_js_vm_count,8},{mapred_2i_pipe,true},{js_max_vm_mem,8},{vnode_mailbox_limit,{1,5000}},{read_write,true}],["./data/bitcask/1210306043414653979137426502093171875652569137152/1.bitcask.data"]] in 0.270714 seconds.
+
+2013-01-14 22:29:59.552 [info] <0.360.0>@riak_kv_app:prep_stop:164 Stopping application riak_kv - marked service down.
+2013-01-14 22:29:59.553 [info] <0.419.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_hook) host stopping (<0.419.0>)
+2013-01-14 22:29:59.553 [info] <0.417.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.417.0>)
+2013-01-14 22:29:59.553 [info] <0.420.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_hook) host stopping (<0.420.0>)
+2013-01-14 22:29:59.554 [info] <0.412.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.412.0>)
+2013-01-14 22:29:59.554 [info] <0.413.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.413.0>)
+2013-01-14 22:29:59.554 [info] <0.414.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.414.0>)
+2013-01-14 22:29:59.554 [info] <0.416.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.416.0>)
+2013-01-14 22:29:59.555 [info] <0.415.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.415.0>)
+2013-01-14 22:29:59.555 [info] <0.406.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_map) host stopping (<0.406.0>)
+2013-01-14 22:29:59.555 [info] <0.410.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_map) host stopping (<0.410.0>)
+2013-01-14 22:29:59.555 [info] <0.403.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_map) host stopping (<0.403.0>)
+2013-01-14 22:29:59.555 [info] <0.408.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_map) host stopping (<0.408.0>)
+2013-01-14 22:29:59.556 [info] <0.360.0>@riak_kv_app:stop:182 Stopped  application riak_kv.
+2013-01-14 22:29:59.558 [info] <0.130.0>@riak_core_app:prep_stop:101 Stopping application riak_core - disabling web services.
+2013-01-14 22:29:59.566 [info] <0.130.0>@riak_core_app:stop:110 Stopped  application riak_core.
+2013-01-14 22:32:39.266 [info] <0.7.0> Application lager started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.296 [info] <0.7.0> Application sasl started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.298 [info] <0.7.0> Application crypto started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.298 [info] <0.7.0> Application public_key started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.305 [info] <0.7.0> Application ssl started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.311 [info] <0.7.0> Application riak_sysmon started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.334 [info] <0.7.0> Application os_mon started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.349 [info] <0.7.0> Application runtime_tools started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.367 [info] <0.7.0> Application erlang_js started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.389 [info] <0.7.0> Application inets started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.392 [info] <0.7.0> Application mochiweb started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.399 [info] <0.7.0> Application webmachine started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.399 [info] <0.7.0> Application basho_stats started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.408 [info] <0.7.0> Application bitcask started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.686 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_core,vnode_routing} = proxy
+2013-01-14 22:32:39.846 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_core,staged_joins} = true
+2013-01-14 22:32:39.964 [info] <0.7.0> Application riak_core started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:39.970 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_pipe,trace_format} = ordsets
+2013-01-14 22:32:40.600 [info] <0.293.0>@riak_core:wait_for_application:450 Waiting for application riak_pipe to start (0 seconds).
+2013-01-14 22:32:40.737 [info] <0.7.0> Application riak_pipe started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:40.802 [info] <0.293.0>@riak_core:wait_for_application:444 Wait complete for application riak_pipe (0 seconds)
+2013-01-14 22:32:41.135 [info] <0.7.0> Application riak_api started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:41.505 [info] <0.386.0>@riak_core:wait_for_service:470 Waiting for service riak_kv to start (0 seconds)
+2013-01-14 22:32:41.543 [info] <0.403.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.403.0>)
+2013-01-14 22:32:41.546 [info] <0.404.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.404.0>)
+2013-01-14 22:32:41.549 [info] <0.405.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.405.0>)
+2013-01-14 22:32:41.551 [info] <0.406.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.406.0>)
+2013-01-14 22:32:41.554 [info] <0.407.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.407.0>)
+2013-01-14 22:32:41.556 [info] <0.408.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.408.0>)
+2013-01-14 22:32:41.559 [info] <0.409.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.409.0>)
+2013-01-14 22:32:41.561 [info] <0.410.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.410.0>)
+2013-01-14 22:32:41.564 [info] <0.412.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.412.0>)
+2013-01-14 22:32:41.567 [info] <0.413.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.413.0>)
+2013-01-14 22:32:41.569 [info] <0.414.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.414.0>)
+2013-01-14 22:32:41.572 [info] <0.415.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.415.0>)
+2013-01-14 22:32:41.574 [info] <0.416.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.416.0>)
+2013-01-14 22:32:41.576 [info] <0.417.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.417.0>)
+2013-01-14 22:32:41.579 [info] <0.419.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_hook) host starting (<0.419.0>)
+2013-01-14 22:32:41.581 [info] <0.420.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_hook) host starting (<0.420.0>)
+2013-01-14 22:32:41.582 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,vnode_vclocks} = true
+2013-01-14 22:32:41.647 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,legacy_keylisting} = false
+2013-01-14 22:32:41.783 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,listkeys_backpressure} = true
+2013-01-14 22:32:42.141 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,index_backpressure} = true
+2013-01-14 22:32:42.381 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,mapred_system} = pipe
+2013-01-14 22:32:42.841 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,mapred_2i_pipe} = true
+2013-01-14 22:32:43.221 [info] <0.151.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,anti_entropy} = enabled_v1
+2013-01-14 22:32:43.804 [info] <0.586.0>@riak_core:wait_for_application:450 Waiting for application riak_kv to start (0 seconds).
+2013-01-14 22:32:44.373 [info] <0.7.0> Application riak_kv started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:44.411 [info] <0.586.0>@riak_core:wait_for_application:444 Wait complete for application riak_kv (0 seconds)
+2013-01-14 22:32:44.555 [info] <0.7.0> Application merge_index started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:44.562 [info] <0.7.0> Application riak_search started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:44.568 [info] <0.7.0> Application cluster_info started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:44.576 [info] <0.7.0> Application riak_control started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:44.576 [info] <0.7.0> Application erlydtl started on node 'riak2@127.0.0.1'
+2013-01-14 22:32:44.838 [info] <0.386.0>@riak_core:wait_for_service:464 Wait complete for service riak_kv (3 seconds)
+2013-01-14 22:36:39.332 [info] <0.55.0> alarm_handler: {set,{system_memory_high_watermark,[]}}
+2013-01-14 22:37:39.339 [info] <0.55.0> alarm_handler: {clear,system_memory_high_watermark}
+2013-01-14 22:41:47.576 [info] <0.367.0>@riak_kv_app:prep_stop:164 Stopping application riak_kv - marked service down.
+2013-01-14 22:41:47.577 [info] <0.419.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_hook) host stopping (<0.419.0>)
+2013-01-14 22:41:47.580 [info] <0.367.0>@riak_kv_app:stop:182 Stopped  application riak_kv.
+2013-01-14 22:41:47.582 [info] <0.130.0>@riak_core_app:prep_stop:101 Stopping application riak_core - disabling web services.
+2013-01-14 22:41:47.588 [info] <0.130.0>@riak_core_app:stop:110 Stopped  application riak_core.
+2013-01-15 07:44:25.901 [info] <0.7.0> Application lager started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:25.947 [info] <0.7.0> Application sasl started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:25.950 [info] <0.7.0> Application crypto started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:25.950 [info] <0.7.0> Application public_key started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:25.956 [info] <0.7.0> Application ssl started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:25.961 [info] <0.7.0> Application riak_sysmon started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:25.980 [info] <0.7.0> Application os_mon started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:25.982 [info] <0.55.0> alarm_handler: {set,{system_memory_high_watermark,[]}}
+2013-01-15 07:44:25.995 [info] <0.7.0> Application runtime_tools started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:26.014 [info] <0.7.0> Application erlang_js started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:26.044 [info] <0.7.0> Application inets started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:26.046 [info] <0.7.0> Application mochiweb started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:26.054 [info] <0.7.0> Application webmachine started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:26.054 [info] <0.7.0> Application basho_stats started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:26.062 [info] <0.7.0> Application bitcask started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:26.385 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_core,vnode_routing} = proxy
+2013-01-15 07:44:26.813 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_core,staged_joins} = true
+2013-01-15 07:44:26.963 [info] <0.7.0> Application riak_core started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:26.969 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_pipe,trace_format} = ordsets
+2013-01-15 07:44:27.447 [info] <0.293.0>@riak_core:wait_for_application:450 Waiting for application riak_pipe to start (0 seconds).
+2013-01-15 07:44:27.602 [info] <0.7.0> Application riak_pipe started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:27.650 [info] <0.293.0>@riak_core:wait_for_application:444 Wait complete for application riak_pipe (0 seconds)
+2013-01-15 07:44:27.966 [info] <0.7.0> Application riak_api started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:28.129 [info] <0.378.0>@riak_core:wait_for_service:470 Waiting for service riak_kv to start (0 seconds)
+2013-01-15 07:44:28.194 [info] <0.395.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.395.0>)
+2013-01-15 07:44:28.198 [info] <0.396.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.396.0>)
+2013-01-15 07:44:28.202 [info] <0.397.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.397.0>)
+2013-01-15 07:44:28.206 [info] <0.398.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.398.0>)
+2013-01-15 07:44:28.209 [info] <0.399.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.399.0>)
+2013-01-15 07:44:28.212 [info] <0.400.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.400.0>)
+2013-01-15 07:44:28.214 [info] <0.401.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.401.0>)
+2013-01-15 07:44:28.217 [info] <0.402.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.402.0>)
+2013-01-15 07:44:28.219 [info] <0.404.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.404.0>)
+2013-01-15 07:44:28.222 [info] <0.405.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.405.0>)
+2013-01-15 07:44:28.225 [info] <0.406.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.406.0>)
+2013-01-15 07:44:28.227 [info] <0.407.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.407.0>)
+2013-01-15 07:44:28.230 [info] <0.408.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.408.0>)
+2013-01-15 07:44:28.232 [info] <0.409.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.409.0>)
+2013-01-15 07:44:28.235 [info] <0.411.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_hook) host starting (<0.411.0>)
+2013-01-15 07:44:28.237 [info] <0.412.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_hook) host starting (<0.412.0>)
+2013-01-15 07:44:28.238 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,vnode_vclocks} = true
+2013-01-15 07:44:28.288 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,legacy_keylisting} = false
+2013-01-15 07:44:28.402 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,listkeys_backpressure} = true
+2013-01-15 07:44:28.515 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,index_backpressure} = true
+2013-01-15 07:44:28.770 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,mapred_system} = pipe
+2013-01-15 07:44:28.916 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,mapred_2i_pipe} = true
+2013-01-15 07:44:29.213 [info] <0.152.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,anti_entropy} = enabled_v1
+2013-01-15 07:44:29.599 [info] <0.574.0>@riak_core:wait_for_application:450 Waiting for application riak_kv to start (0 seconds).
+2013-01-15 07:44:29.712 [info] <0.7.0> Application riak_kv started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:29.720 [info] <0.7.0> Application merge_index started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:29.722 [info] <0.7.0> Application riak_search started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:29.725 [info] <0.7.0> Application cluster_info started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:29.729 [info] <0.7.0> Application riak_control started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:29.729 [info] <0.7.0> Application erlydtl started on node 'riak2@127.0.0.1'
+2013-01-15 07:44:29.802 [info] <0.574.0>@riak_core:wait_for_application:444 Wait complete for application riak_kv (0 seconds)
+2013-01-15 07:44:31.261 [info] <0.378.0>@riak_core:wait_for_service:464 Wait complete for service riak_kv (3 seconds)
+2013-01-15 07:51:03.207 [info] <0.7.0> Application lager started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.221 [info] <0.7.0> Application sasl started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.224 [info] <0.7.0> Application crypto started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.224 [info] <0.7.0> Application public_key started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.230 [info] <0.7.0> Application ssl started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.234 [info] <0.7.0> Application riak_sysmon started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.244 [info] <0.7.0> Application os_mon started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.255 [info] <0.55.0> alarm_handler: {set,{system_memory_high_watermark,[]}}
+2013-01-15 07:51:03.260 [info] <0.7.0> Application runtime_tools started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.279 [info] <0.7.0> Application erlang_js started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.301 [info] <0.7.0> Application inets started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.304 [info] <0.7.0> Application mochiweb started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.312 [info] <0.7.0> Application webmachine started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.312 [info] <0.7.0> Application basho_stats started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:03.320 [info] <0.7.0> Application bitcask started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:04.411 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_core,vnode_routing} = proxy
+2013-01-15 07:51:05.154 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_core,staged_joins} = true
+2013-01-15 07:51:05.341 [info] <0.7.0> Application riak_core started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:05.733 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_pipe,trace_format} = ordsets
+2013-01-15 07:51:06.471 [info] <0.293.0>@riak_core:wait_for_application:450 Waiting for application riak_pipe to start (0 seconds).
+2013-01-15 07:51:06.472 [info] <0.7.0> Application riak_pipe started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:06.573 [info] <0.293.0>@riak_core:wait_for_application:444 Wait complete for application riak_pipe (0 seconds)
+2013-01-15 07:51:08.058 [info] <0.7.0> Application riak_api started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:09.954 [info] <0.385.0>@riak_core:wait_for_service:470 Waiting for service riak_kv to start (0 seconds)
+2013-01-15 07:51:09.993 [info] <0.402.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.402.0>)
+2013-01-15 07:51:09.995 [info] <0.403.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.403.0>)
+2013-01-15 07:51:09.998 [info] <0.404.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.404.0>)
+2013-01-15 07:51:10.000 [info] <0.405.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.405.0>)
+2013-01-15 07:51:10.003 [info] <0.406.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.406.0>)
+2013-01-15 07:51:10.005 [info] <0.407.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.407.0>)
+2013-01-15 07:51:10.008 [info] <0.408.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.408.0>)
+2013-01-15 07:51:10.011 [info] <0.409.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_map) host starting (<0.409.0>)
+2013-01-15 07:51:10.013 [info] <0.411.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.411.0>)
+2013-01-15 07:51:10.016 [info] <0.412.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.412.0>)
+2013-01-15 07:51:10.018 [info] <0.413.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.413.0>)
+2013-01-15 07:51:10.021 [info] <0.414.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.414.0>)
+2013-01-15 07:51:10.023 [info] <0.415.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.415.0>)
+2013-01-15 07:51:10.026 [info] <0.416.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_reduce) host starting (<0.416.0>)
+2013-01-15 07:51:10.028 [info] <0.418.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_hook) host starting (<0.418.0>)
+2013-01-15 07:51:10.031 [info] <0.419.0>@riak_kv_js_vm:init:76 Spidermonkey VM (thread stack: 16MB, max heap: 8MB, pool: riak_kv_js_hook) host starting (<0.419.0>)
+2013-01-15 07:51:10.031 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,vnode_vclocks} = true
+2013-01-15 07:51:10.389 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,legacy_keylisting} = false
+2013-01-15 07:51:11.514 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,listkeys_backpressure} = true
+2013-01-15 07:51:12.528 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,index_backpressure} = true
+2013-01-15 07:51:13.894 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,mapred_system} = pipe
+2013-01-15 07:51:14.123 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,mapred_2i_pipe} = true
+2013-01-15 07:51:15.351 [info] <0.150.0>@riak_core_capability:process_capability_changes:529 New capability: {riak_kv,anti_entropy} = enabled_v1
+2013-01-15 07:51:17.589 [info] <0.575.0>@riak_core:wait_for_application:450 Waiting for application riak_kv to start (0 seconds).
+2013-01-15 07:51:22.190 [info] <0.7.0> Application riak_kv started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:22.283 [info] <0.575.0>@riak_core:wait_for_application:444 Wait complete for application riak_kv (4 seconds)
+2013-01-15 07:51:23.168 [info] <0.7.0> Application merge_index started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:23.172 [info] <0.7.0> Application riak_search started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:23.575 [info] <0.7.0> Application cluster_info started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:23.716 [info] <0.7.0> Application riak_control started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:23.717 [info] <0.7.0> Application erlydtl started on node 'riak2@127.0.0.1'
+2013-01-15 07:51:59.160 [info] <0.385.0>@riak_core:wait_for_service:464 Wait complete for service riak_kv (47 seconds)

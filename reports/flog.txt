@@ -1,0 +1,14 @@
+   308.4: flog total
+     7.2: flog/method average
+
+   192.8: TTT total
+    38.8: TTT::AI#minimax                  lib/ttt/ai.rb:10
+    31.6: TTT::Board#winner?               lib/ttt/board.rb:41
+    26.8: TTT::View#output_board           lib/ttt/view.rb:15
+    21.4: TTT::Game#move                   lib/ttt/game.rb:44
+    17.8: TTT::AI#build_game_tree          lib/ttt/ai.rb:59
+    12.8: TTT::AI#available_moves          lib/ttt/ai.rb:49
+    12.6: TTT::Game#eval_board_state       lib/ttt/game.rb:60
+    11.4: TTT::Game#set_player             lib/ttt/game.rb:21
+    10.1: TTT::Human#move                  lib/ttt/human.rb:3
+     9.4: TTT::View#input_side             lib/ttt/view.rb:39

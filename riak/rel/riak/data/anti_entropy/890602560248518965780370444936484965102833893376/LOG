@@ -1,0 +1,27 @@
+2013/01/15-07:50:55.234236 b1682000             Options.comparator: leveldb.InternalKeyComparator
+2013/01/15-07:50:55.234282 b1682000      Options.create_if_missing: 1
+2013/01/15-07:50:55.234293 b1682000        Options.error_if_exists: 0
+2013/01/15-07:50:55.234301 b1682000        Options.paranoid_checks: 0
+2013/01/15-07:50:55.234309 b1682000                    Options.env: 0x7fb5e2c35af0
+2013/01/15-07:50:55.234317 b1682000               Options.info_log: 0x7fb5e2e27570
+2013/01/15-07:50:55.234324 b1682000      Options.write_buffer_size: 4194304
+2013/01/15-07:50:55.234332 b1682000         Options.max_open_files: 20
+2013/01/15-07:50:55.234339 b1682000            Options.block_cache: 0x7fb5e4839e00
+2013/01/15-07:50:55.234346 b1682000             Options.block_size: 4096
+2013/01/15-07:50:55.234354 b1682000 Options.block_restart_interval: 16
+2013/01/15-07:50:55.234361 b1682000            Options.compression: 1
+2013/01/15-07:50:55.234368 b1682000          Options.filter_policy: NULL
+2013/01/15-07:50:55.234375 b1682000                         crc32c: hardware
+2013/01/15-07:50:55.246376 b1682000 Recovering log #16
+2013/01/15-07:50:55.270063 b1682000 Level-0 table #18: started
+2013/01/15-07:50:55.271178 b1682000 Level-0 table #18: 188 bytes, 2 keys OK
+2013/01/15-07:50:55.272822 b1682000 Delete type=0 #16
+2013/01/15-07:50:55.272898 b1682000 Delete type=3 #14
+2013/01/15-07:50:55.273454 b2559000 Compacting 4@0 + 0@1 files
+2013/01/15-07:50:55.290897 b2559000 Generated table #20: 2 keys, 188 bytes
+2013/01/15-07:50:55.290935 b2559000 Compacted 4@0 + 0@1 files => 188 bytes
+2013/01/15-07:50:55.291205 b2559000 compacted to: files[ 0 1 0 0 0 0 0 ]
+2013/01/15-07:50:55.291360 b2559000 Delete type=2 #7
+2013/01/15-07:50:55.291437 b2559000 Delete type=2 #10
+2013/01/15-07:50:55.291498 b2559000 Delete type=2 #15
+2013/01/15-07:50:55.291553 b2559000 Delete type=2 #18

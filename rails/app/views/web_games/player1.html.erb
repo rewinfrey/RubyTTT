@@ -1,0 +1,14 @@
+<%= form_tag('player1_setup', method: :put) do %>
+  <%= label_tag "Game Setup" %>
+  <%= text_area_tag :game_setup, @game_setup %>
+  <%= label_tag :Player1, "Player1 Type:" %>
+  <%= check_box_tag :player1, "#{@game_setup.human_class}" %>
+  <%= label_tag "Human" %>
+ <% @game_setup.ai_options.each do |option| %>
+    <%= check_box_tag :player1, "#{option}" %>
+    <%= label_tag "#{option.to_s.gsub(/TTT::/, '').upcase.gsub(/AI/, 'AI ')}" %>
+  <% end %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
+<%= @game_setup.inspect %>

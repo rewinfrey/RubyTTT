@@ -1,0 +1,17 @@
+2013/01/15-07:51:54.562877 b310d000             Options.comparator: leveldb.InternalKeyComparator
+2013/01/15-07:51:54.562906 b310d000      Options.create_if_missing: 1
+2013/01/15-07:51:54.562913 b310d000        Options.error_if_exists: 0
+2013/01/15-07:51:54.562918 b310d000        Options.paranoid_checks: 0
+2013/01/15-07:51:54.562923 b310d000                    Options.env: 0x7fb84262aad0
+2013/01/15-07:51:54.562928 b310d000               Options.info_log: 0x7fb8425253d0
+2013/01/15-07:51:54.562933 b310d000      Options.write_buffer_size: 4194304
+2013/01/15-07:51:54.562938 b310d000         Options.max_open_files: 20
+2013/01/15-07:51:54.562942 b310d000            Options.block_cache: 0x7fb843836a00
+2013/01/15-07:51:54.562947 b310d000             Options.block_size: 4096
+2013/01/15-07:51:54.562952 b310d000 Options.block_restart_interval: 16
+2013/01/15-07:51:54.562956 b310d000            Options.compression: 1
+2013/01/15-07:51:54.562961 b310d000          Options.filter_policy: NULL
+2013/01/15-07:51:54.562966 b310d000                         crc32c: hardware
+2013/01/15-07:51:55.483815 b310d000 Recovering log #11
+2013/01/15-07:51:55.619444 b310d000 Delete type=0 #11
+2013/01/15-07:51:55.619525 b310d000 Delete type=3 #10

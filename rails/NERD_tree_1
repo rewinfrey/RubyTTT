@@ -1,0 +1,99 @@
+" Press ? for help
+
+.. (up a dir)
+<ers/rickwinfrey/Play/railsttt/
+▼ app/
+  ▶ assets/
+  ▼ controllers/
+    application_controller.rb
+    games_controller.rb
+    test_controller.rb
+    web_games_controller.rb
+  ▶ helpers/
+  ▶ mailers/
+  ▼ models/
+    web_game.rb
+  ▼ views/
+    ▶ games/
+    ▶ layouts/
+    ▶ test/
+    ▼ web_games/
+      board_selection.html.erb
+      created_game.html.erb
+      end_game.html.erb
+      index.html.erb
+      new.html.erb
+      player1.html.erb
+      player2.html.erb
+      setup.html.erb
+      show.html.erb
+      test_show.html.erb
+▼ config/
+  ▶ environments/
+  ▶ initializers/
+  ▶ locales/
+  application.rb
+  boot.rb
+  database.yml
+  environment.rb
+  routes.rb
+▼ db/
+  ▼ migrate/
+    20121212210541_create_web_games_table.rb
+    20121212210631_drop_web_game_table.rb
+  schema.rb
+  seeds.rb
+▶ doc/
+▼ lib/
+  ▶ assets/
+  ▼ ruby-ttt/
+    ▶ bin/
+    ▶ features/
+    ▼ lib/
+      ▼ ttt/
+        ai.rb
+        ai_difficulty_io_interface.rb
+        ai_easy.rb
+        ai_hard.rb
+        ai_medium.rb
+        board.rb
+        board_selection_io_interface.rb
+        command_line_view.rb
+        four_by_four.rb
+        game.rb
+        game_setup.rb
+        game_setup_io_interface.rb
+        gameio.rb
+        human.rb
+        play_again_io_interface.rb
+        player.rb
+        player_side_io_interface.rb
+        player_sides_io_interface.rb
+        player_type_io_interface.rb
+        three_by_three.rb
+        three_by_three_by_three.rb
+        web_view.rb
+      ttt.rb
+    ▶ out/
+    ▶ spec/
+    '
+    cyclo_report
+    flay.txt
+    flog.txt
+    Gemfile
+    Gemfile.lock
+    index_cyclo.html
+    report_summary.txt
+  ▶ tasks/
+▶ log/
+▶ public/
+▶ ruby-ttt/
+▶ script/
+▶ spec/
+▶ tmp/
+▶ vendor/
+config.ru
+Gemfile
+Gemfile.lock
+Rakefile
+README.rdoc

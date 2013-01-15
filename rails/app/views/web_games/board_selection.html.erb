@@ -1,0 +1,14 @@
+<%= form_tag('board_selection', method: :put) do %>
+  <%= label_tag "Game Setup" %>
+  <%= text_area_tag :game_setup, @game_setup %>
+  <%= label_tag :board, "Board Type:" %>
+  <% @game_setup.board_options.each do |option| %>
+    <%= check_box_tag "#{option}" %>
+    <%= label_tag "#{option.to_s.gsub(/TTT::/, '').upcase}"%>
+  <% end %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
+<%= @game_setup.inspect %>
+
+

@@ -1,0 +1,7 @@
+2013-01-13 01:27:36.018 [warning] <0.85.0> OS_MON (memsup) timeout, no data collected
+
+2013-01-13 11:12:58.023 [info] <0.9507.9>@riak_kv_exchange_fsm:do_timeout:265 Timeout during exchange between (local) {319703483166135013357056057156686910549735243776,'riak3@127.0.0.1'} and (remote) {365375409332725729550921208179070754913983135744,'riak1@127.0.0.1'}, (preflist) {319703483166135013357056057156686910549735243776,3}
+2013-01-13 11:12:58.027 [warning] <0.85.0> OS_MON (memsup) timeout, no data collected
+
+2013-01-13 13:39:17.189 [warning] <0.85.0> OS_MON (memsup) timeout, no data collected
+

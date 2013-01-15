@@ -1,0 +1,152 @@
+body {
+ font-family: helvetica;
+}
+
+table {
+  border-collapse: collapse;
+  margin-right: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+form {
+  width: 210px;
+  margin: auto;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.move_button {
+  margin: auto;
+  width: 100px;
+}
+
+.button {
+  margin: auto;
+  font-size: 30px;
+  height: 200px;
+  width: 100px;
+}
+
+.form {
+  width: 165px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.notice {
+  width: 1000px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.move_input {
+  width: 50px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+.move_label {
+  margin-bottom: 5px;
+}
+
+.move_history {
+  float: right;
+  margin-right: 30px;
+}
+
+.square {
+  height: 100px;
+  width:  100px;
+  font-size: 30px;
+  line-height: 12px;
+  font-family: monaco;
+  text-align: center;
+  margin: 4px;
+}
+
+.x_taken_square {
+  background-color: #FFC046;
+}
+
+.o_taken_square {
+  background-color: #73A4FF;
+}
+
+.untaken_square {
+  color: #c1c1c1;
+  font-size: 14px;
+}
+
+.top_left {
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+}
+
+.top_right {
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+}
+
+.top_middle {
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-left: 5px solid black;
+}
+
+.middle_left {
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+}
+
+.middle {
+  border: 5px solid black;
+}
+
+.middle_right {
+  border-top: 5px solid black;
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+}
+
+.bottom_left {
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+}
+
+.bottom_middle {
+  border-right: 5px solid black;
+  border-left: 5px solid black;
+  border-top: 5px solid black;
+}
+
+.bottom_right {
+  border-left: 5px solid black;
+  border-top: 5px solid black;
+}
+
+.four_by_four {
+  width: 400px;
+  margin: auto;
+}
+
+.three_by_three {
+  width: 300px;
+  margin: auto;
+}
+
+.three_by_three_by_three {
+  width: 300px;
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+#current_player {
+  display: none;
