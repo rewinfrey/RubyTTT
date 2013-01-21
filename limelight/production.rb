@@ -1,6 +1,7 @@
 $:.unshift File.expand_path("../../lib", __FILE__)
 $:.unshift File.dirname(__FILE__)
 
+require 'rubygems'
 require "playscripts/game_playscript"
 require 'ttt/game'
 require 'ttt/game_builder'

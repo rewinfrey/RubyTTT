@@ -1,10 +1,6 @@
 module TTT
   class Board
-    attr_accessor :board, :win_arr
-    def initialize
-      self.board   = Array.new(9, " ")
-      self.win_arr = [[0,1,2], [0,4,8], [0,3,6], [1,4,7], [2,5,8], [2,4,6], [3,4,5], [6,7,8]]
-    end
+    attr_accessor :board
 
     def []
       board
@@ -35,16 +31,7 @@ module TTT
     end
 
     def draw_game?
-      !board.include? " "
-    end
-
-    def winner?
-      win_arr.each do |win_combo|
-        return true if board[win_combo[0]] == board[win_combo[1]] &&
-                       board[win_combo[1]] == board[win_combo[2]] &&
-                       board[win_combo[0]] != " "
-      end
-      false
+      (!board.include? " ") && !winner?
     end
   end
 end

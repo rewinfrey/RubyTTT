@@ -2,8 +2,8 @@ require 'spec_helper'
 
 module CLI
   describe BoardSelection do
-    let(:view)       { View.new(instream: StringIO.new, outstream: StringIO.new) }
-    let(:boards)     { TTT::GameBuilder.new.players }
+    let(:view)       { IO.new(instream: StringIO.new, outstream: StringIO.new) }
+    let(:boards)     { TTT::Setup.new.players }
     let(:boardio)    { BoardSelection.new(view: view, boards: boards) }
 
     describe "#board_selection_input_valid?" do

@@ -2,15 +2,15 @@ require 'spec_helper'
 require 'stringio'
 
 module CLI
-  describe View do
+  describe IO do
     let(:input)     { StringIO.new }
     let(:output)    { StringIO.new }
     let(:view)      { View.new(outstream: output, instream: input) }
-    let(:players)   { TTT::GameBuilder.new.players }
-    let(:boards)    { TTT::GameBuilder.new.boards  }
-    let(:game)      { TTT::GameBuilder.new.new_game(player1: players.first, player2: players.first, board: boards.first) }
-    let(:game1)     { TTT::GameBuilder.new.new_game(player1: players.first, player2: players.first, board: boards[1])    }
-    let(:game2)     { TTT::GameBuilder.new.new_game(player1: players.first, player2: players.first, board: boards[2])    }
+    let(:players)   { TTT::Setup.new.players }
+    let(:boards)    { TTT::Setup.new.boards  }
+    let(:game)      { TTT::Setup.new.new_game(player1: players.first, player2: players.first, board: boards.first) }
+    let(:game1)     { TTT::Setup.new.new_game(player1: players.first, player2: players.first, board: boards[1])    }
+    let(:game2)     { TTT::Setup.new.new_game(player1: players.first, player2: players.first, board: boards[2])    }
     let(:board)     { game.board }
     let(:board1)    { game1.board }
     let(:board2)    { game2.board }
@@ -184,6 +184,9 @@ module CLI
         view.should_receive(:four_by_four_move_prompt).and_return(true)
         view.output_help(board1[])
       end
+    end
+
+    describe "#traverse_move" do
     end
   end
 end

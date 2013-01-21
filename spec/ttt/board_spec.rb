@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module TTT
   describe Board do
-    let(:board)     { Board.new }
+    let(:board)     { ThreeByThree.new }
 
     describe "#initialize" do
       it "board has length 9" do

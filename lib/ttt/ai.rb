@@ -1,17 +1,17 @@
 require 'ttt/player'
+require 'ttt/minimax'
+
 module TTT
   class AI < Player
+    include Minimax
+    attr_accessor :board, :max_ply
+
     def move(options)
-      board(options[:board].dup)
-      minimax
+      self.board = (options[:board].dup)
     end
 
     def opposite_side(side)
       side == "x" ? "o" : "x"
-    end
-
-    def board(board = nil)
-      @board ||= board
     end
 
     def available_moves

@@ -3,9 +3,10 @@ require 'stringio'
 
 module TTT
   describe Game do
-    let(:players)   { GameBuilder.new.players }
-    let(:boards)    { GameBuilder.new.boards  }
-    let(:game)      { GameBuilder.new.new_game(player1: players.first, player2: players.first, board: boards.first) }
+    let(:setup)     { Setup.new }
+    let(:players)   { setup.players }
+    let(:boards)    { setup.boards  }
+    let(:game)      { setup.new_game(player1: players.first, player2: players.first, board: boards.first) }
 
     describe "#initialize" do
       it "instantiated with a player1" do
@@ -56,12 +57,6 @@ module TTT
       end
     end
 
-    describe "#opposite" do
-      it "returns the opposite side of its input" do
-        game.opposite("o").should == "x"
-      end
-    end
-
     describe "#next_move" do
       before(:each) do
         game.player1        = AIEasy.new(side: "x")
@@ -97,17 +92,17 @@ module TTT
     describe "#which_board?" do
       it "returns `three_by_three` when the board type is 3x3" do
         game.board = ThreeByThree.new
-        game.which_board?.should == "three_by_three"
+        game.which_board.should == "three_by_three"
       end
 
       it "returns `four_by_four` when the board type is 4x4" do
         game.board = FourByFour.new
-        game.which_board?.should == "four_by_four"
+        game.which_board.should == "four_by_four"
       end
 
       it "returns `three_by_three_by_three` when the board type is 3x3x3" do
         game.board = ThreeByThreeByThree.new
-        game.which_board?.should == "three_by_three_by_three"
+        game.which_board.should == "three_by_three_by_three"
       end
     end
 

@@ -1,9 +1,9 @@
 module CLI
   class PlayAgain
-    attr_accessor :view
+    attr_accessor :presenter
 
     def initialize(options)
-      self.view = options.fetch(:view)
+      self.presenter = options.fetch(:presenter)
     end
 
     def play_again?
@@ -16,13 +16,13 @@ module CLI
         return false if reply.chomp == "n"
         true
       else
-        view.generic_error_msg
+        presenter.generic_error_msg
         play_again?
       end
     end
 
     def input
-      @view.input
+      presenter.input
     end
 
     def valid_reply?(response)
@@ -30,7 +30,7 @@ module CLI
     end
 
     def play_again_msg
-      view.play_again_msg
+      presenter.play_again_msg
     end
   end
 end

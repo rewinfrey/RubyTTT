@@ -1,5 +1,7 @@
 require 'spec_helper'
 require 'playscripts/game_playscript'
+require 'rubygems'
+require '/Users/rickwinfrey/.rvm/gems/jruby-1.6.6@limelightv0.6.19/gems/riak-client-1.1.1/lib/riak'
 require 'ttt/game_builder'
 
 describe "GamePlayscript" do

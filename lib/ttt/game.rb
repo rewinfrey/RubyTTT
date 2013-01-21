@@ -6,7 +6,7 @@ module TTT
       self.board          = options[:board]
       self.player1        = options[:player1]
       self.player2        = options[:player2]
-      self.current_player = options[:player1]
+      self.current_player = self.player1
       self.history        = options.fetch(:history)
     end
 
@@ -14,8 +14,8 @@ module TTT
       current_player.no_gui?
     end
 
-    def which_board?
-      board.to_s
+    def which_board
+      board.type
     end
 
     def next_move
@@ -28,15 +28,15 @@ module TTT
     end
 
     def valid_move?(input)
-      input.class == Fixnum && 0 <= input && input <= (board[].length - 1)
+      input.class == Fixnum && 0 <= input && input <= (board[].length - 1) && board.free?(input.to_i)
     end
 
     def mark_move(cell, side = current_player.side)
       board.update(cell, side)
     end
 
-    def record_move(move)
-      history.record_move(current_player.side, move)
+    def record_move(cell, side = current_player.side)
+      history.record_move(cell, side)
     end
 
     def show_history
@@ -49,10 +49,6 @@ module TTT
       else
         self.current_player = self.player1
       end
-    end
-
-    def opposite(side)
-      side == "x" ? "o" : "x"
     end
 
     def which_current_player?

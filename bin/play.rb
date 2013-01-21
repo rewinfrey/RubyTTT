@@ -1,12 +1,12 @@
 #! /usr/bin/env ruby
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift File.expand_path('../../cli/lib', __FILE__)
-require 'ttt/game_builder'
+require 'ttt/setup'
 require 'cli/cli_game'
 
-game_builder = TTT::GameBuilder.new
-CLI::CLIGame.play(players: game_builder.players,
-                  boards:  game_builder.boards,
-                  db:      game_builder.new_db(:bucket => "ttt_game_list"),
+setup = TTT::Setup.new
+CLI::CLIGame.play(players: setup.players,
+                  boards:  setup.boards,
+                  db:      setup.new_db,
                   output:  $stdout,
                   input:   $stdin)

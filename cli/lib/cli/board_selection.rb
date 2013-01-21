@@ -1,19 +1,15 @@
 module CLI
-  class BoardSelection
+  class BoardSelection < Selection
     attr_accessor :board, :boards, :view
 
     def initialize(options)
       self.boards = options.fetch(:boards)
-      self.view   = options.fetch(:view)
-    end
-
-    def input
-      view.input
+      self.presenter = options.fetch(:presenter)
     end
 
     def process
-      view.board_selection_prompt(boards)
-      process_board_selection((input).chomp.to_i)
+      presenter.board_selection_prompt(boards)
+      process_board_selection(presenter.input.chomp.to_i)
       self
     end
 

@@ -1,25 +1,17 @@
-module CLI
-  class PlayerSelection
-    attr_accessor :view, :players, :player1, :player2
-    def initialize(options)
-      self.view    = options.fetch(:view)
-      self.players = options.fetch(:players)
-    end
+require 'cli/selection'
 
-    def input
-      view.input
+module CLI
+  class PlayerSelection < Selection
+    attr_accessor :presenter, :players, :player1, :player2
+    def initialize(options)
+      self.presenter = options.fetch(:presenter)
+      self.players   = options.fetch(:players)
     end
 
     def process
-      view.player_type_prompt(1, players)
-      process_player_type_input(1, input)
-      view.player_type_prompt(2, players)
-      process_player_type_input(2, input)
+      process_player_type_input(1, presenter.player_type_prompt(1, players))
+      process_player_type_input(2, presenter.player_type_prompt(2, players))
       self
-    end
-
-    def player_type_prompt(num)
-      view.player_type_prompt(num, @players)
     end
 
     def process_player_type_input(num, selection)

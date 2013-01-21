@@ -1,22 +1,34 @@
 Railsttt::Application.routes.draw do
-  resources :games, :test
+  resources :game do
+    collection do
+      get  'game_index'
+      post 'create_game'
+      get  'show'
+    end
+    member do
+      post 'mark_move'
+      get  'computer_move'
+      get  'next_history_move'
+      get  'load_game'
+    end
+  end
 
   resources :web_games do
+   collection do
+      put  'setup'
+    end
     member do
       put 'player1_setup'
       put 'player2_setup'
       put 'board_selection'
-      post 'create'
       get 'test_show'
       get 'determine_next_move'
       get 'end_game'
       get 'computer_move'
       post 'mark_move'
+      post 'create'
     end
-    collection do
-      put 'setup'
-    end
-  end
+ end
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

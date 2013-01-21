@@ -1,22 +1,18 @@
 require 'cli/player_selection'
 require 'cli/board_selection'
-require 'cli/view'
+require 'cli/io'
 require 'cli/play_again'
+require 'cli/cli_presenter'
 
 module CLI
   class CLIGame
     def self.play(options)
-      @players  = options.fetch(:players)
-      @boards   = options.fetch(:boards)
-      @db       = options.fetch(:db)
-      self.view = View.new(outstream: options.fetch(:output), instream: options.fetch(:input))
-      menu
-    end
-
-    def self.menu
-      welcome_prompt
-      command_list
-      process_command(@view.input)
+      @players   = options.fetch(:players)
+      @boards    = options.fetch(:boards)
+      @db        = options.fetch(:db)
+      @presenter = CLIPresenter.new(options.fetch(:input), options.fetch(:output))
+      @presenter.menu
+      process_command(@presenter.input)
     end
 
     def self.process_command(selection)
@@ -24,28 +20,25 @@ module CLI
       when "1" then init_game
       when "2" then game_list
       when "3" then exit
-      else menu
+      else
+        @presenter.menu
+        process_command(@presenter.input)
       end
     end
 
-    def self.command_list
-      view.command_list
-    end
-
     def self.game_list
-      games = @db.game_list(:list_name => "ttt_game_list")
+      games = @db.game_list
       if games.length == 0
-        view.no_games_saved
-        menu
+        @presenter.no_games
       else
         view.game_list(games)
-        db_list
+        view.select_game_prompt
         load_game(view.input)
       end
     end
 
-    def self.db_list
-      view.db_list
+    def self.select_game_prompt
+      view.select_game_prompt
     end
 
     def self.welcome_prompt
@@ -53,20 +46,19 @@ module CLI
     end
 
     def self.init_game
-      welcome_prompt
-      pselect   = PlayerSelection.new(players: @players, view: @view).process
-      bselect   = BoardSelection.new(boards: @boards, view: @view).process
-      self.game = TTT::GameBuilder.new.new_game(player1: pselect.player1, player2: pselect.player2, board: bselect.board)
-      @db.add_game(:list_name => "ttt_game_list", :game => game)
-      @id   = @db.id
+      @presenter.welcome_prompt
+      pselect   = PlayerSelection.new(players: @players, presenter: @presenter).process
+      bselect   = BoardSelection.new(boards: @boards, presenter: @presenter).process
+      self.game = TTT::Setup.new.new_game(player1: pselect.player1, player2: pselect.player2, board: bselect.board)
+      @id = @db.add_game(game)
       play_game
     end
 
     def self.load_game(selection)
-      self.game = @db.load_game(:list_name => "ttt_game_list", :id => selection.chomp)
-      @view.output_help(@game.board[])
-      @view.output_board(@game.board[])
-      @view.player_prompt(@game.current_player)
+      self.game = @db.load_game(selection.chomp)
+      @presenter.output_help(@game.board[])
+      @presenter.output_board(@game.board[])
+      @presenter.player_prompt(@game.current_player)
       eval_board_state
       play_game
     end
@@ -75,15 +67,15 @@ module CLI
       while @game.not_finished?
         move_cycle
         eval_board_state
-        @db.save_game(:list_name => "ttt_game_list", :game => game, :id => @id)
+        @db.save_game(@id, game)
       end
       play_again
     end
 
     def self.move_cycle
-      @view.output_help(@game.board[])
-      @view.output_board(@game.board[])
-      @view.player_prompt(@game.current_player)
+      @presenter.output_help(@game.board[])
+      @presenter.output_board(@game.board[])
+      @presenter.player_prompt(@game.current_player)
       process_next_move
     end
 
@@ -91,10 +83,10 @@ module CLI
       if @game.ai_move?
         @game.next_move
       else
-        process_human_move(@view.input)
+        process_human_move(@presenter.input)
         @game.switch_player
       end
-      @db.save_game(:list_name => "ttt_game_list", :game => @game, :id => @id)
+      @db.save_game(@id, @game)
     end
 
     def self.game
@@ -120,16 +112,16 @@ module CLI
 
     def self.eval_board_state
       if @game.winner?
-        @view.output_board(@game.board[])
-        @view.winner_prompt @game.last_player?
+        @presenter.output_board(@game.board[])
+        @presenter.winner_prompt @game.last_player?
       elsif @game.finished?
-        @view.output_board(@game.board[])
-        @view.draw_prompt
+        @presenter.output_board(@game.board[])
+        @presenter.draw_prompt
       end
     end
 
     def self.play_again
-      exit unless PlayAgain.new(view: @view).play_again?
+      exit unless PlayAgain.new(presenter: @presenter).play_again?
       play(players: @players, boards: @boards, output: $stdout, input: $stdin, db: @db)
     end
   end

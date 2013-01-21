@@ -1,20 +1,21 @@
 require 'ttt/move_history'
+require 'ttt/move_traverser'
 
 module TTT
   class GameHistory
-    attr_accessor :history, :move_number
+    attr_accessor :history, :move_traverser
     def initialize
-      self.history = []
-      self.move_number = 1
+      self.history         = []
+      self.move_traverser  = MoveTraverser.new(self)
     end
 
-    def record_move(side, move)
-      self.history << MoveHistory.new(:side => side, :move => move)
-      inc_move_num
+    def record_move(cell, side)
+      self.history << MoveHistory.new(:move => cell, :side => side)
+      inc_move_index
     end
 
-    def inc_move_num
-      self.move_number += 1
+    def inc_move_index
+      self.move_traverser.move_index = history.length
     end
 
     def show

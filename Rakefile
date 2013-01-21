@@ -7,6 +7,11 @@ task :lib_specs do
   system('rspec spec')
 end
 
+desc "Running CLI specs"
+task :cli_specs do
+  system 'bash -l -c "cd cli; rvm use default; rspec spec"'
+end
+
 desc "Running Rails specs"
 task :rails_specs do
   system('cd rails; rake spec; cd ..')
@@ -17,6 +22,35 @@ task :limelight_specs do
   system "bash -l -c 'cd limelight; rspec spec'"
 end
 
-task :all_specs => [:lib_specs, :rails_specs, :limelight_specs] do
+task :all_specs => [:lib_specs, :cli_specs, :rails_specs, :limelight_specs] do
   "Running all specs"
+end
+
+task :launch_riak do
+  puts   "launching riak cluster"
+  puts   "-- node 1 starting --"
+  system "launchctl limit maxfiles 2048 2048; cd riak/rel; riak/bin/riak start"
+  puts   "-- node 2 starting --"
+  system "launchctl limit maxfiles 2048 2048; cd riak/rel; riak1/bin/riak start"
+  puts   "-- node 3 starting --"
+  system "launchctl limit maxfiles 2048 2048; cd riak/rel; riak2/bin/riak start"
+  puts   "-- node 4 starting --"
+  system "launchctl limit maxfiles 2048 2048; cd riak/rel; riak3/bin/riak start"
+  puts   "-- cluster ring forming --"
+  puts   "-- checking ring status --"
+  system "cd riak/rel; riak/bin/riak-admin ring_status"
+  puts   "-- if status is up, but not available, Riak is still configuring the ring, but is accessible"
+end
+
+task :stop_riak do
+  puts   "shutting down riak cluster"
+  puts   "-- stopping node 4 --"
+  system "cd riak/rel; riak3/bin/riak stop"
+  puts   "-- stopping node 3 --"
+  system "cd riak/rel; riak2/bin/riak stop"
+  puts   "-- stopping node 2 --"
+  system "cd riak/rel; riak1/bin/riak stop"
+  puts   "-- stopping node1 --"
+  system "cd riak/rel; riak/bin/riak stop"
+  puts   "all nodes stopped"
 end

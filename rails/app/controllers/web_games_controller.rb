@@ -11,7 +11,6 @@ class WebGamesController < ApplicationController
 
   def create
     web_game = WebGame.new(game: build_new_game(params))
-
     if web_game.save
       cookies[:game_id] = web_game.id
       flash[:notice]    = "Welcome to TTT!"
@@ -72,12 +71,8 @@ class WebGamesController < ApplicationController
     elsif @web_game.finished?
       "It's a draw"
     else
-      player1_move? ? "Player 1 turn" : "Player 2 turn"
+      player1_move?(@web_game.game) ? "Player 1 turn" : "Player 2 turn"
     end
-  end
-
-  def reset_cookies
-    cookies[:game_id] = nil
   end
 
   def next_move
@@ -86,17 +81,7 @@ class WebGamesController < ApplicationController
     WebGameHistory.create!(web_game: @web_game, web_game_id: @web_game.id, player: last_player?, move: move)
   end
 
-  def player1_move?
-    @web_game.game.current_player.side == @web_game.game.player1.side
-  end
-
-  def build_new_game(params)
-    game_builder = TTT::GameBuilder.new
-    game = game_builder.new_game(player1: params[:player1], player2: params[:player2], board: params[:board])
-    game
-  end
-
-  def last_player?
+    def last_player?
     if @web_game.game.current_player.side == "x"
       "Player 2"
     else

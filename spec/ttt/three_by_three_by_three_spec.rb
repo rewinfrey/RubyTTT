@@ -61,9 +61,9 @@ module TTT
       end
 
       it "returns true when board is full" do
-        board[] = ["x", "o", "x", "x", "o", "o", "o", "x", "o",
-                   "x", "o", "o", "o", "o", "o", "o", "o", "o",
-                   "x", "x", "x", "x", "x", "x", "x", "x", "x"]
+        board[] = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+                   "j", "k", "l", "m", "n", "o", "p", "q", "r",
+                   "s", "t", "u", "v", "w", "x", "y", "z", "a"]
         board.draw_game?.should == true
       end
     end
