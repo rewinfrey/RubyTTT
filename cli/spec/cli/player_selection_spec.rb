@@ -2,10 +2,10 @@ require 'spec_helper'
 
 module CLI
   describe PlayerSelection do
-    let(:view)    { View.new(instream: StringIO.new, outstream: StringIO.new) }
-    let(:players) { TTT::GameBuilder.new.players }
+    let(:presenter)    { CLIPresenter.new(StringIO.new, StringIO.new) }
+    let(:players) { TTT::Setup.new.players }
 
-    let(:ptypeio) { PlayerSelection.new(players: players, view: view) }
+    let(:ptypeio) { PlayerSelection.new(players, presenter) }
 
     describe "#player_selection_valid?" do
       it "returns false if input is not an integer within the range of available options" do
@@ -21,9 +21,9 @@ module CLI
 
     describe "#player_type_prompt" do
       it "displays an enumerable list of player types the user can choose from" do
-        ptypeio.player_type_prompt(1)
-        ptypeio.view.outstream.string.split('n').include? "1. Human"
-        ptypeio.view.outstream.string.split('n').include? "2. AI Easy"
+        presenter.player_type_prompt(1, players)
+        ptypeio.presenter.io.outstream.string.split('n').include? "1. Human"
+        ptypeio.presenter.io.outstream.string.split('n').include? "2. AI Easy"
       end
     end
 
@@ -43,16 +43,16 @@ module CLI
       end
 
       it "when input doesn't pass validation, an error prompt is generated and the user is prompted to input again" do
-        ptypeio.view.instream = StringIO.new("1\n")
+        ptypeio.presenter.io.instream = StringIO.new("1\n")
         ptypeio.process_player_type_input(1, "6\n")
-        ptypeio.view.outstream.string.split("\n").include? "I'm sorry, I didn't understand. Please try again."
+        ptypeio.presenter.io.outstream.string.split("\n").include? "I'm sorry, I didn't understand. Please try again."
         ptypeio.player1.should == "Human"
       end
     end
 
     describe "#process" do
       it "prompts the player to enter a type for player1 and player2, resulting in player1 and player2 being set" do
-        ptypeio.view.instream = StringIO.new("1\n1\n")
+        ptypeio.presenter.io.instream = StringIO.new("1\n1\n")
         ptypeio.process
         ptypeio.player1.should == "Human"
         ptypeio.player2.should == "Human"

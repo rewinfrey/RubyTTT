@@ -11,7 +11,7 @@ module TTT
     end
 
     def update cell, side
-      self.board[cell] = side
+      self.board[cell.to_i] = side
     end
 
     def empty?

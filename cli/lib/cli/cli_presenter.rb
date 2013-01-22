@@ -2,11 +2,15 @@ module CLI
   class CLIPresenter
     attr_accessor :io
     def initialize(input, output)
-      self.io = IO.new(instream: input, outstream: output)
+      self.io = CLIO.new(input, output)
     end
 
     def output(args)
       io.output args
+    end
+
+    def padding
+      output "\n"
     end
 
     def input
@@ -18,21 +22,38 @@ module CLI
     end
 
     def command_list
-      output "\nPlease select an option from the following list:\n"
-      output "1. Play TTT!"
-      output "2. Load game"
-      output "3. Quit"
+      output "\nPlease select an option from the following list:"
+      padding
+      output "1. Play TTT!\n\n"
+      output "2. Load game\n\n"
+      output "3. Quit\n\n"
+      padding
     end
 
     def menu
       welcome_prompt
       command_list
+      selection = input.chomp
+      if valid_menu?(selection)
+        selection
+      else
+        generic_error_msg
+        menu
+      end
     end
 
-    def game_list(list)
-      sort_list(list).each do |game_key|
-        output game_key
+    def valid_menu?(selection)
+      selection.to_i >= 1 && selection.to_i <= 3
+    end
+
+    def process_game_list(list)
+      clear
+      puts "Please choose one of the following games:\n\n"
+      list.each do |key|
+        output key
       end
+      output "\n"
+      input.chomp
     end
 
     def sort_list(list)
@@ -41,21 +62,49 @@ module CLI
 
     def no_games
       output "No games were found."
-      menu
     end
 
     def player_type_prompt(num, players)
-      output "\nPlease select an option for Player #{num}:\n"
+      output "\nPlease select an option for Player #{num}:\n\n"
       display_options_with_index(players)
       input
     end
 
     def select_game_prompt
-      output "\nPlease select an game from the list:\n"
+      output "\nPlease choose one of the following games:\n\n"
     end
 
-    def player_prompt(player)
+    def player_prompt(board, history, player)
+      output_help(board)
+      output_move_history(history)
+      output_board(board)
       output "\n#{player.prompt}"
+    end
+
+    def output_move_history(moves)
+      output "\n"
+      output "Move History:".rjust(10)
+      move_num = "#"
+      move_side = "side"
+      move_square = "square"
+      output "#{move_num} #{move_side.rjust(7)} #{move_square.rjust(7)}"
+      moves.each_with_index do |move, n|
+        output "#{n}. #{(move.side).to_s.rjust(5)}  #{(move.move).to_s.rjust(5)}"
+      end
+    end
+
+    def process_winner(board, history, player)
+      clear
+      output_move_history(history)
+      output_board(board)
+      winner_prompt(player)
+    end
+
+    def process_draw(board, history)
+      clear
+      output_move_history(history)
+      output_board(board)
+      draw_prompt
     end
 
     def board_selection_prompt(boards)
@@ -66,13 +115,14 @@ module CLI
 
     def display_options_with_index(options)
       options.each_with_index do |option, index|
-        output "#{index + 1}: #{option}"
+        output "#{index + 1}: #{option}\n\n"
       end
     end
 
     def clear
-      output "\e[2J"
-      output "\e[0;0H"
+      system('clear')
+      #output "\e[2J"
+      #output "\e[0;0H"
     end
 
     def ai_difficulty_prompt(ai_options)
@@ -84,12 +134,19 @@ module CLI
       end
     end
 
+    def post_game_msg
+      output "\nWould you like to review the game history (y or n)?"
+    end
+
     def play_again_msg
       output "\nPlay again (y or n)?"
     end
 
+    def walk_msg
+      output "\nEnter -1 to go back, 0 for main menu, or 1 to go forward"
+    end
+
     def output_board(board)
-      output_help(board)
       output "\n"
       case board.length
       when 9
@@ -115,12 +172,8 @@ module CLI
       output "\n"
     end
 
-    def generic_error_msg
+    def error
       output "\nI'm sorry, I didn't understand. Please try again."
-    end
-
-    def output_move_error
-      output "\nCannot move there! >.< Please try another square."
     end
 
     def winner_prompt(winner)
@@ -157,13 +210,7 @@ module CLI
 
     def welcome_prompt
       clear
-      output("\nWelcome to TTT!")
+      output("Welcome to TTT!")
     end
-
-
-
-
-
-
   end
 end

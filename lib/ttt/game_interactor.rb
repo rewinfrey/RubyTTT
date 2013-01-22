@@ -47,7 +47,7 @@ module TTT
     end
 
     def winner(game)
-      game.last_player?
+      game.last_player
     end
 
     def draw?(game)

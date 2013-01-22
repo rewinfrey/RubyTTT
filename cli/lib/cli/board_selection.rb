@@ -1,10 +1,10 @@
 module CLI
   class BoardSelection < Selection
-    attr_accessor :board, :boards, :view
+    attr_accessor :board, :boards, :presenter
 
-    def initialize(options)
-      self.boards = options.fetch(:boards)
-      self.presenter = options.fetch(:presenter)
+    def initialize(boards, presenter)
+      self.boards = boards
+      self.presenter = presenter
     end
 
     def process
@@ -17,7 +17,7 @@ module CLI
       if board_selection_input_valid?(selection)
         set_board_string(selection)
       else
-        view.generic_error_msg
+        presenter.error
         process
       end
     end

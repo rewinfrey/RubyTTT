@@ -14,6 +14,4 @@ class ApplicationController < ActionController::Base
   def player1_move?(game)
     game.current_player.side == game.player1.side
   end
-
-
 end

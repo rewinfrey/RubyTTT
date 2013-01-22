@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ttt/config_options'
 
 module TTT
   describe Context do
@@ -10,6 +11,18 @@ module TTT
 
     before(:each) do
       context.setup=(Setup)
+    end
+
+    describe "players" do
+      it "returns the list of player types supported by the library" do
+        context.players.should == ConfigOptions::HUMAN_READABLE_PLAYERS
+      end
+    end
+
+    describe "boards" do
+      it "returns the list of board types supported by the library" do
+        context.boards.should == ConfigOptions::HUMAN_READABLE_BOARDS
+      end
     end
 
     describe "add_game" do

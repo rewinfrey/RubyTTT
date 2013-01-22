@@ -55,7 +55,7 @@ module TTT
       current_player.equal?(player1) ? "Player 1" : "Player 2"
     end
 
-    def last_player?
+    def last_player
       current_player == player1 ? "Player 2" : "Player 1"
     end
 

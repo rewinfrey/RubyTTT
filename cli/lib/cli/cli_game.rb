@@ -1,18 +1,20 @@
 require 'cli/player_selection'
 require 'cli/board_selection'
-require 'cli/io'
+require 'cli/clio'
 require 'cli/play_again'
 require 'cli/cli_presenter'
+require 'cli/walk_history'
 
 module CLI
   class CLIGame
-    def self.play(options)
-      @players   = options.fetch(:players)
-      @boards    = options.fetch(:boards)
-      @db        = options.fetch(:db)
-      @presenter = CLIPresenter.new(options.fetch(:input), options.fetch(:output))
-      @presenter.menu
-      process_command(@presenter.input)
+    def self.configure(context, input, output)
+      @context   = context
+      @presenter = CLIPresenter.new(input, output)
+      self
+    end
+
+    def self.play
+      process_command(@presenter.menu)
     end
 
     def self.process_command(selection)
@@ -21,19 +23,75 @@ module CLI
       when "2" then game_list
       when "3" then exit
       else
-        @presenter.menu
-        process_command(@presenter.input)
+        play
       end
     end
 
+    def self.init_game
+      @presenter.welcome_prompt
+      player_select   = get_player_selection
+      board_select    = get_board_selection
+      @game           = build_game(player_select, board_select)
+      @id             = @context.add_game(@game)
+      play_game
+    end
+
+    def self.get_player_selection
+      PlayerSelection.new(@context.players, @presenter).process
+    end
+
+    def self.get_board_selection
+      BoardSelection.new(@context.boards, @presenter).process
+    end
+
+    def self.build_game(pselect, bselect)
+      @context.setup.new_game(player1: pselect.player1, player2: pselect.player2, board: bselect.board)
+    end
+
+    def self.play_game
+      while @game.not_finished?
+        move_cycle
+      end
+      walk_history
+      play_again
+    end
+
+    def self.move_cycle
+      @game = @context.get_game(@id)
+      @presenter.player_prompt(@game.board_arr, @game.show_history, @game.current_player)
+      process_next_move
+    end
+
+    def self.process_next_move
+      @context.ai_move(@id) if @game.ai_move?
+      move = @presenter.input if !@game.ai_move?
+      if @context.valid_move?(@id, move.to_i) && !@game.ai_move?
+        @context.update_game(@id, move.to_i, @game.current_player.side)
+      end
+      @game = @context.get_game(@id)
+      eval_board_state
+      play_game
+    end
+
+    def self.eval_board_state
+      @presenter.process_winner(@game.board_arr, @game.show_history, @game.last_player) if @game.winner?
+      @presenter.process_draw(@game.board_arr, @game.show_history)                      if @game.finished? && !@game.winner?
+    end
+
     def self.game_list
-      games = @db.game_list
+      games = @context.game_list
       if games.length == 0
         @presenter.no_games
+        sleep 2
+        play
       else
-        view.game_list(games)
-        view.select_game_prompt
-        load_game(view.input)
+        selection = @presenter.process_game_list(games)
+        if @game = @context.get_game(selection.chomp)
+          @id = selection.chomp
+          resume_game
+        else
+          game_list
+        end
       end
     end
 
@@ -41,52 +99,10 @@ module CLI
       view.select_game_prompt
     end
 
-    def self.welcome_prompt
-      view.welcome_prompt
-    end
-
-    def self.init_game
-      @presenter.welcome_prompt
-      pselect   = PlayerSelection.new(players: @players, presenter: @presenter).process
-      bselect   = BoardSelection.new(boards: @boards, presenter: @presenter).process
-      self.game = TTT::Setup.new.new_game(player1: pselect.player1, player2: pselect.player2, board: bselect.board)
-      @id = @db.add_game(game)
-      play_game
-    end
-
-    def self.load_game(selection)
-      self.game = @db.load_game(selection.chomp)
-      @presenter.output_help(@game.board[])
-      @presenter.output_board(@game.board[])
-      @presenter.player_prompt(@game.current_player)
+    def self.resume_game
+      @presenter.player_prompt(@game.board[], @game.show_history, @game.current_player)
       eval_board_state
       play_game
-    end
-
-    def self.play_game
-      while @game.not_finished?
-        move_cycle
-        eval_board_state
-        @db.save_game(@id, game)
-      end
-      play_again
-    end
-
-    def self.move_cycle
-      @presenter.output_help(@game.board[])
-      @presenter.output_board(@game.board[])
-      @presenter.player_prompt(@game.current_player)
-      process_next_move
-    end
-
-    def self.process_next_move
-      if @game.ai_move?
-        @game.next_move
-      else
-        process_human_move(@presenter.input)
-        @game.switch_player
-      end
-      @db.save_game(@id, @game)
     end
 
     def self.game
@@ -97,32 +113,31 @@ module CLI
       @game = args
     end
 
-    def self.view
-      @view
+    def self.presenter=(args)
+      @presenter = args
     end
 
-    def self.view=(args)
-      @view = args
+    def self.presenter
+      @presenter
     end
 
-    def self.process_human_move(input)
-      @game.mark_move(input.to_i)
-      @game.record_move(input.to_i)
+    def self.context=(args)
+      @context = args
     end
 
-    def self.eval_board_state
-      if @game.winner?
-        @presenter.output_board(@game.board[])
-        @presenter.winner_prompt @game.last_player?
-      elsif @game.finished?
-        @presenter.output_board(@game.board[])
-        @presenter.draw_prompt
-      end
+    def self.context
+      @context
     end
 
     def self.play_again
-      exit unless PlayAgain.new(presenter: @presenter).play_again?
-      play(players: @players, boards: @boards, output: $stdout, input: $stdin, db: @db)
+      exit unless PlayAgain.new(@presenter).play_again?
+      play
+    end
+
+    def self.walk_history
+      @walk_history = WalkHistory.new(@presenter, @game)
+      @walk_history.post_game_msg
+      play_again
     end
   end
 end

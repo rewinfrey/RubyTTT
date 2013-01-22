@@ -1,3 +1,5 @@
+$:.unshift File.expand_path('../lib/', __FILE__)
+require 'ttt/setup'
 require 'rake'
 require 'rake/testtask'
 
@@ -53,4 +55,16 @@ task :stop_riak do
   puts   "-- stopping node1 --"
   system "cd riak/rel; riak/bin/riak stop"
   puts   "all nodes stopped"
+end
+
+task :dump_riak do
+  puts "cleaning up 'ttt_games' bucket"
+  setup = TTT::Setup.new
+  db    = setup.new_db
+  db.client['ttt_games'].keys.each do |key|
+    if game = db.client['ttt_games'].get(key)
+      game.delete
+      puts "success dumping key: #{key}"
+    end
+  end
 end
