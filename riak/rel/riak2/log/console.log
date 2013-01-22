@@ -895,3 +895,23 @@
 
 2013-01-22 11:48:57.570 [error] <0.12177.0>@riak_core_handoff_sender:start_fold:216 hinted_handoff transfer of riak_kv_vnode from 'riak2@127.0.0.1' 411047335499316445744786359201454599278231027712 to 'riak3@127.0.0.1' 411047335499316445744786359201454599278231027712 failed because of TCP recv timeout
 2013-01-22 11:48:57.577 [error] <0.226.0>@riak_core_handoff_manager:handle_info:282 An outbound handoff of partition riak_kv_vnode 411047335499316445744786359201454599278231027712 was terminated for reason: {shutdown,timeout}
+2013-01-22 11:51:08.236 [error] <0.12342.0>@riak_core_handoff_sender:start_fold:216 hinted_handoff transfer of riak_kv_vnode from 'riak2@127.0.0.1' 45671926166590716193865151022383844364247891968 to 'riak3@127.0.0.1' 45671926166590716193865151022383844364247891968 failed because of TCP recv timeout
+2013-01-22 11:51:08.239 [error] <0.226.0>@riak_core_handoff_manager:handle_info:282 An outbound handoff of partition riak_kv_vnode 45671926166590716193865151022383844364247891968 was terminated for reason: {shutdown,timeout}
+2013-01-22 11:51:57.570 [error] <0.12402.0>@riak_core_handoff_sender:start_fold:216 hinted_handoff transfer of riak_kv_vnode from 'riak2@127.0.0.1' 411047335499316445744786359201454599278231027712 to 'riak3@127.0.0.1' 411047335499316445744786359201454599278231027712 failed because of TCP recv timeout
+2013-01-22 11:51:57.573 [error] <0.226.0>@riak_core_handoff_manager:handle_info:282 An outbound handoff of partition riak_kv_vnode 411047335499316445744786359201454599278231027712 was terminated for reason: {shutdown,timeout}
+2013-01-22 11:52:36.273 [info] <0.428.0>@riak_kv_app:prep_stop:164 Stopping application riak_kv - marked service down.
+2013-01-22 11:52:36.274 [info] <0.507.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_hook) host stopping (<0.507.0>)
+2013-01-22 11:52:36.275 [info] <0.508.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_hook) host stopping (<0.508.0>)
+2013-01-22 11:52:36.275 [info] <0.501.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.501.0>)
+2013-01-22 11:52:36.275 [info] <0.500.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.500.0>)
+2013-01-22 11:52:36.275 [info] <0.502.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.502.0>)
+2013-01-22 11:52:36.276 [info] <0.503.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.503.0>)
+2013-01-22 11:52:36.276 [info] <0.505.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.505.0>)
+2013-01-22 11:52:36.276 [info] <0.504.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.504.0>)
+2013-01-22 11:52:36.277 [info] <0.498.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_map) host stopping (<0.498.0>)
+2013-01-22 11:52:36.277 [info] <0.489.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_map) host stopping (<0.489.0>)
+2013-01-22 11:52:36.277 [info] <0.494.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_map) host stopping (<0.494.0>)
+2013-01-22 11:52:36.278 [info] <0.428.0>@riak_kv_app:stop:182 Stopped  application riak_kv.
+2013-01-22 11:52:36.280 [info] <0.187.0>@riak_core_app:prep_stop:101 Stopping application riak_core - disabling web services.
+2013-01-22 11:52:37.097 [info] <0.187.0>@riak_core_app:stop:110 Stopped  application riak_core.
+2013-01-22 11:52:37.106 [info] <0.77.0> alarm_handler: {clear,system_memory_high_watermark}

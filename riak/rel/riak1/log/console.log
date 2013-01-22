@@ -791,3 +791,19 @@
 
 2013-01-22 11:50:08.279 [error] <0.12703.0>@riak_core_handoff_sender:start_fold:216 hinted_handoff transfer of riak_kv_vnode from 'riak1@127.0.0.1' 319703483166135013357056057156686910549735243776 to 'riak3@127.0.0.1' 319703483166135013357056057156686910549735243776 failed because of TCP recv timeout
 2013-01-22 11:50:08.282 [error] <0.180.0>@riak_core_handoff_manager:handle_info:282 An outbound handoff of partition riak_kv_vnode 319703483166135013357056057156686910549735243776 was terminated for reason: {shutdown,timeout}
+2013-01-22 11:50:41.574 [error] <0.12746.0>@riak_core_handoff_sender:start_fold:216 hinted_handoff transfer of riak_kv_vnode from 'riak1@127.0.0.1' 137015778499772148581595453067151533092743675904 to 'riak3@127.0.0.1' 137015778499772148581595453067151533092743675904 failed because of TCP recv timeout
+2013-01-22 11:50:41.577 [error] <0.180.0>@riak_core_handoff_manager:handle_info:282 An outbound handoff of partition riak_kv_vnode 137015778499772148581595453067151533092743675904 was terminated for reason: {shutdown,timeout}
+2013-01-22 11:52:36.280 [info] <0.180.0>@riak_core_handoff_manager:handle_info:279 An outbound handoff of partition riak_kv_vnode 319703483166135013357056057156686910549735243776 was terminated for reason: {shutdown,max_concurrency}
+2013-01-22 11:52:36.486 [info] <0.12942.0> Merged ["./data/bitcask/639406966332270026714112114313373821099470487552",[{vnode_vclocks,true},{included_applications,[]},{allow_strfun,false},{reduce_js_vm_count,6},{anti_entropy_build_limit,{1,3600000}},{storage_backend,riak_kv_bitcask_backend},{hook_js_vm_count,2},{anti_entropy_leveldb_opts,[{write_buffer_size,4194304},{max_open_files,20}]},{listkeys_backpressure,true},{anti_entropy,{on,[]}},{mapred_name,"mapred"},{stats_urlpath,"stats"},{legacy_stats,true},{js_thread_stack,16},{anti_entropy_data_dir,"./data/anti_entropy"},{anti_entropy_expire,604800000},{anti_entropy_concurrency,2},{add_paths,[]},{anti_entropy_tick,15000},{http_url_encoding,on},{map_js_vm_count,8},{mapred_2i_pipe,true},{js_max_vm_mem,8},{vnode_mailbox_limit,{1,5000}},{read_write,true}],["./data/bitcask/639406966332270026714112114313373821099470487552/8.bitcask.data"]] in 0.433282 seconds.
+
+2013-01-22 11:52:39.956 [info] <0.448.0>@riak_kv_app:prep_stop:164 Stopping application riak_kv - marked service down.
+2013-01-22 11:52:39.957 [info] <0.496.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_hook) host stopping (<0.496.0>)
+2013-01-22 11:52:39.958 [info] <0.497.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_hook) host stopping (<0.497.0>)
+2013-01-22 11:52:39.958 [info] <0.489.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.489.0>)
+2013-01-22 11:52:39.958 [info] <0.491.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.491.0>)
+2013-01-22 11:52:39.959 [info] <0.487.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_map) host stopping (<0.487.0>)
+2013-01-22 11:52:39.959 [info] <0.490.0>@riak_kv_js_vm:terminate:240 Spidermonkey VM (pool: riak_kv_js_reduce) host stopping (<0.490.0>)
+2013-01-22 11:52:39.961 [info] <0.448.0>@riak_kv_app:stop:182 Stopped  application riak_kv.
+2013-01-22 11:52:39.963 [info] <0.148.0>@riak_core_app:prep_stop:101 Stopping application riak_core - disabling web services.
+2013-01-22 11:52:41.563 [info] <0.148.0>@riak_core_app:stop:110 Stopped  application riak_core.
+2013-01-22 11:52:41.571 [info] <0.63.0> alarm_handler: {clear,system_memory_high_watermark}
