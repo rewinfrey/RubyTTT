@@ -10,3 +10,12 @@ riak/rel/riak1/log/error.log
 riak/rel/riak2/log/configonsole.log
 riak/rel/riak2/log/error.log
 riak/rel/riak3/log/console.lockg
+riak/deps/bear
+riak/deps/getopt
+riak/rel/riak1/log/console.log
+riak/rel/riak/log/console.log
+riak/rel/riak/rellog/error.log
+riak/rel/riak1/log/console.log
+riak/rel/riak1/log/error.log
+riak/rel/riak2/log/console.log
+riak/rel/riak2/log/errorr.log
