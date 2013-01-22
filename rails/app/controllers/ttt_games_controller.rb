@@ -14,6 +14,7 @@ class TttGamesController < ApplicationController
   def create_game
     game              = @context.setup.new_game(player1: params[:player1], player2: params[:player2], board: params[:board])
     cookies[:game_id] = @context.add_game(game)
+    flash[:notice]    = "Welcome to Tic Tac Toe!"
     redirect_to :action => "show"
   end
 
@@ -39,9 +40,13 @@ class TttGamesController < ApplicationController
     cookies[:game_id]   = params[:id] if @game
     @web_game_history   = @context.get_history(cookies[:game_id])
     @id                 = params[:id]
+
     max_length          = TttGame.get_history_max_length(@game)
+
     adjust_move_index_pointers(params[:index_diff].to_i, max_length)
+
     history_board       = TttGame.get_history_board(@game, cookies[:move_index])
+
     @web_game_presenter = WebGamePresenter.for(board: history_board, id: cookies[:game_id])
     cookies[:last_id]   = cookies[:game_id]
     render "end_game"

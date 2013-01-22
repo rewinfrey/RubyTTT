@@ -1,5 +1,4 @@
 require 'ttt/game'
-require 'ttt/game_builder'
 
 class GameController < ApplicationController
 
