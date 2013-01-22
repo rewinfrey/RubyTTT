@@ -7,7 +7,9 @@ require 'ttt/setup'
 require 'ttt/context'
 
 on_production_loaded do
+  backstage_pass :context
   backstage_pass :game
+  backstage_pass :game_id
   backstage_pass :limelight_game
   backstage_pass :game_builder
 end

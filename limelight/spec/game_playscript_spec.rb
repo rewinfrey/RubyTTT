@@ -1,15 +1,16 @@
 require 'spec_helper'
 require 'playscripts/game_playscript'
 require 'rubygems'
-require '/Users/rickwinfrey/.rvm/gems/jruby-1.6.6@limelightv0.6.19/gems/riak-client-1.1.1/lib/riak'
-require 'ttt/game_builder'
+require 'ttt/context'
+require 'ttt/setup'
 
 describe "GamePlayscript" do
-
-  let(:players) { TTT::GameBuilder.new.players }
-  let(:boards)  { TTT::GameBuilder.new.boards  }
-  let(:game)    { TTT::GameBuilder.new.new_game(:player1 => players[0], :player2 => players[1], :board => boards[0]) }
-  let(:ai_game) { TTT::GameBuilder.new.new_game(:player1 => players[1], :player2 => players[1], :board => boards[0]) }
+  let(:context) { TTT::Context.instance }
+  let(:context) { context.setup = TTT::Setup }
+  let(:players) { context.players }
+  let(:boards)  { context.boards  }
+  let(:game)    { context.setup.new_game(:player1 => players[0], :player2 => players[1], :board => boards[0]) }
+  let(:ai_game) { context.setup.new_game(:player1 => players[1], :player2 => players[1], :board => boards[0]) }
 
   let(:scene)   { double('scene', :name => "ttt") }
 
