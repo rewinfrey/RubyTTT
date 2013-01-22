@@ -115,8 +115,8 @@ module TTT
 
     describe "#last_player?" do
       it "returns the previous player" do
-        game.last_player?.should == "Player 2"
-        game.last_player?.should_not == "Player 1"
+        game.last_player.should == "Player 2"
+        game.last_player.should_not == "Player 1"
       end
     end
 

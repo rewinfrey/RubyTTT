@@ -2,8 +2,8 @@ module CLI
   class PlayAgain
     attr_accessor :presenter
 
-    def initialize(options)
-      self.presenter = options.fetch(:presenter)
+    def initialize(presenter)
+      self.presenter = presenter
     end
 
     def play_again?
@@ -16,7 +16,7 @@ module CLI
         return false if reply.chomp == "n"
         true
       else
-        presenter.generic_error_msg
+        presenter.error
         play_again?
       end
     end

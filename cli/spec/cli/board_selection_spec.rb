@@ -2,9 +2,10 @@ require 'spec_helper'
 
 module CLI
   describe BoardSelection do
-    let(:view)       { IO.new(instream: StringIO.new, outstream: StringIO.new) }
+    let(:view)       { CLIO.new(StringIO.new, StringIO.new) }
     let(:boards)     { TTT::Setup.new.players }
-    let(:boardio)    { BoardSelection.new(view: view, boards: boards) }
+    let(:presenter)  { CLIPresenter.new(StringIO.new, StringIO.new) }
+    let(:boardio)    { BoardSelection.new(boards, presenter) }
 
     describe "#board_selection_input_valid?" do
       it "returns true when input is within valid range of options" do
@@ -20,7 +21,7 @@ module CLI
 
     describe "#process" do
       it "displays a generic error message if the user inputs invalid input" do
-        boardio.view.instream = StringIO.new("9\n1\n")
+        presenter.io.instream = StringIO.new("9\n1\n")
         boardio.process
       end
     end

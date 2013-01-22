@@ -60,6 +60,15 @@ module TTT
           board.board = Array.new(9, ' ')
           traverser.history_board_builder(board, 0).should == Array.new(9, ' ')
         end
+
+        it "does not alter the original board" do
+          traverser.history_board_builder(board, 3).should_not == board.board
+        end
+
+        it "does not alter the original game history" do
+          original_history = traverser.game_history.history
+          traverser.game_history.history.should == original_history
+        end
       end
     end
   end

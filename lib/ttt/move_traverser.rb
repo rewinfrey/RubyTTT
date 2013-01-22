@@ -1,3 +1,5 @@
+require 'yaml'
+
 module TTT
   class MoveTraverser
     attr_accessor :game_history, :move_index
@@ -20,17 +22,23 @@ module TTT
       end
     end
 
-    def history_board_builder(board, move_number)
-      history = game_history.history.dup
-      board.board.length.times do |n|
-        if (n + 1) <= move_number
-          move_history = history.shift
-          cell = move_history.move
-          side = move_history.side
-          board.update cell, side
+    def history_board_builder(board, move_number_limit)
+      total_moves    = game_history.history.length
+      clone_board    = YAML.load(YAML.dump(board))
+      clean_board(clone_board)
+      clone_history  = YAML.load(YAML.dump(game_history.history))
+
+      total_moves.times do |n|
+        cur_move = clone_history.shift
+        if (n + 1) <= move_number_limit
+          clone_board.update(cur_move.move, cur_move.side)
         end
       end
-      board.board
+      clone_board.board
+    end
+
+    def clean_board(board)
+      board.board.each_index { |index| board.update index, " " }
     end
   end
 end

@@ -3,9 +3,9 @@ require 'cli/selection'
 module CLI
   class PlayerSelection < Selection
     attr_accessor :presenter, :players, :player1, :player2
-    def initialize(options)
-      self.presenter = options.fetch(:presenter)
-      self.players   = options.fetch(:players)
+    def initialize(players, presenter)
+      self.presenter = presenter
+      self.players   = players
     end
 
     def process
@@ -18,9 +18,8 @@ module CLI
       if player_selection_valid? selection.chomp.to_i
         set_player_string(num, selection.chomp.to_i)
       else
-        view.generic_error_msg
-        view.player_type_prompt(num, players)
-        process_player_type_input(num, input)
+        presenter.error
+        process_player_type_input(num, presenter.player_type_prompt(num, players))
       end
     end
 
@@ -38,8 +37,7 @@ module CLI
     end
 
     def player_selection_valid?(selection)
-      return false if selection.class == Float
-      0 < selection && selection <= players.length
+      0 < selection.to_i && selection <= players.length
     end
   end
 end

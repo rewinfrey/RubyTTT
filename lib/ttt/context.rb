@@ -16,6 +16,14 @@ module TTT
       @setup
     end
 
+    def players
+      @setup.players
+    end
+
+    def boards
+      @setup.boards
+    end
+
     def create_game(player1, player2, board)
       game = @setup.new_game(:player1 => player1, :player2 => player2, :board => board)
       add_game(game)
