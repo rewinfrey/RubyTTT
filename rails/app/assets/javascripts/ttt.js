@@ -1,10 +1,8 @@
 $(document).ready( function(){
   $('td.untaken').click(mark_move);
-  $('td.core_untaken').click(core_mark_move);
   $('.current_player').bind(next_move);
-  $('.core_current_player').bind(core_next_move);
   $('#button_right').click(next_history_move);
-  $('#button_left').click(previous_history_move);
+  $('#button_left').click(prev_history_move);
   window.setTimeout( function() { next_move()}, 1500);
   window.setTimeout( function() { core_next_move()}, 1500);
 });
@@ -23,28 +21,22 @@ function next_move() {
   val = $('#current_player').html();
   if (val.trim() == "true") {
     id = $('#current_player').attr('game_id');
-    window.location = "/web_games/"+id+"/computer_move";
+    window.location = "/ttt_games/"+id+"/next_move";
   }
 }
 
-function core_next_move() {
-  val = $('#core_current_player').html();
-  if (val.trim() == "true") {
-    id = $('#core_current_player').attr('game_id');
-    window.location = "/game/"+id+"/computer_move";
-  }
+function prev_history_move() {
+  get_board_history(-1);
 }
 
 function next_history_move() {
-  val = $('#move_index').attr("data");
-  val = parseInt(val) + 1;
-  id  = $('#core_current_player').attr('game_id');
-  window.location = "/game/"+id+"/next_history_move?move_index="+val;
+  get_board_history(1);
 }
 
-function previous_history_move() {
-  val = $('#move_index').attr("data");
-  val = parseInt(val) - 1;
-  id  = $('#core_current_player').attr('game_id');
-  window.location = "/game/"+id+"/next_history_move?move_index="+val;
+function get_board_history(diff) {
+  window.location = "/ttt_games/"+find_id()+"/move_history?index_diff="+diff;
+}
+
+function find_id() {
+  return $('#current_player').attr('game_id');
 }

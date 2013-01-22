@@ -1,19 +1,15 @@
-2013/01/20-20:47:41.951103 b0d4c000             Options.comparator: leveldb.InternalKeyComparator
-2013/01/20-20:47:41.951145 b0d4c000      Options.create_if_missing: 1
-2013/01/20-20:47:41.951156 b0d4c000        Options.error_if_exists: 0
-2013/01/20-20:47:41.951164 b0d4c000        Options.paranoid_checks: 0
-2013/01/20-20:47:41.951171 b0d4c000                    Options.env: 0x7f8e48626ca0
-2013/01/20-20:47:41.951179 b0d4c000               Options.info_log: 0x7f8e4862c580
-2013/01/20-20:47:41.951187 b0d4c000      Options.write_buffer_size: 4194304
-2013/01/20-20:47:41.951194 b0d4c000         Options.max_open_files: 20
-2013/01/20-20:47:41.951201 b0d4c000            Options.block_cache: 0x7f8e49056c00
-2013/01/20-20:47:41.951209 b0d4c000             Options.block_size: 4096
-2013/01/20-20:47:41.951216 b0d4c000 Options.block_restart_interval: 16
-2013/01/20-20:47:41.951223 b0d4c000            Options.compression: 1
-2013/01/20-20:47:41.951230 b0d4c000          Options.filter_policy: NULL
-2013/01/20-20:47:41.951237 b0d4c000                         crc32c: hardware
-2013/01/20-20:47:43.410501 b0d4c000 Recovering log #46
-2013/01/20-20:47:44.814777 b0d4c000 Level-0 table #48: started
-2013/01/20-20:47:44.943272 b0d4c000 Level-0 table #48: 188 bytes, 2 keys OK
-2013/01/20-20:47:45.068960 b0d4c000 Delete type=0 #46
-2013/01/20-20:47:45.070900 b0d4c000 Delete type=3 #45
+2013/01/22-07:45:18.388923 b1eb2000             Options.comparator: leveldb.InternalKeyComparator
+2013/01/22-07:45:18.388956 b1eb2000      Options.create_if_missing: 1
+2013/01/22-07:45:18.388963 b1eb2000        Options.error_if_exists: 0
+2013/01/22-07:45:18.388968 b1eb2000        Options.paranoid_checks: 0
+2013/01/22-07:45:18.388972 b1eb2000                    Options.env: 0x7fc5d051c120
+2013/01/22-07:45:18.388977 b1eb2000               Options.info_log: 0x7fc5d061df60
+2013/01/22-07:45:18.388981 b1eb2000      Options.write_buffer_size: 4194304
+2013/01/22-07:45:18.388995 b1eb2000         Options.max_open_files: 20
+2013/01/22-07:45:18.389000 b1eb2000            Options.block_cache: 0x7fc5d105ee00
+2013/01/22-07:45:18.389004 b1eb2000             Options.block_size: 4096
+2013/01/22-07:45:18.389009 b1eb2000 Options.block_restart_interval: 16
+2013/01/22-07:45:18.389013 b1eb2000            Options.compression: 1
+2013/01/22-07:45:18.389018 b1eb2000          Options.filter_policy: NULL
+2013/01/22-07:45:18.389023 b1eb2000                         crc32c: hardware
+2013/01/22-07:45:18.393318 b1eb2000 Delete type=3 #1

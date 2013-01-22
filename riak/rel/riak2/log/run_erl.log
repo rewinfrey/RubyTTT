@@ -1,8 +1,8 @@
-run_erl [1134] Sun Jan 20 21:05:34 2013
+run_erl [1040] Tue Jan 22 09:38:26 2013
 Args before exec of shell:
-run_erl [1134] Sun Jan 20 21:05:34 2013
+run_erl [1040] Tue Jan 22 09:38:26 2013
 argv[0] = sh
-run_erl [1134] Sun Jan 20 21:05:34 2013
+run_erl [1040] Tue Jan 22 09:38:26 2013
 argv[1] = -c
-run_erl [1134] Sun Jan 20 21:05:34 2013
+run_erl [1040] Tue Jan 22 09:38:26 2013
 argv[2] = exec /Users/rickwinfrey/Play/rubyttt/riak/rel/riak2/bin/riak console

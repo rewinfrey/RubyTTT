@@ -1,0 +1,8 @@
+<div class="move_history" style="float: right; width: 170px; height: 800px; text-align: right;">
+  <h4 style="text-align: center;">Move History</h4>
+  <ul style="width: 215px;">
+    <% @web_game_history.each_with_index do |move, index| %>
+      <li style="padding: 10px 70px;"><%= index %>.    <%= move.side %>:     <%= move.move %>
+    <% end %>
+  </ul>
+</div>

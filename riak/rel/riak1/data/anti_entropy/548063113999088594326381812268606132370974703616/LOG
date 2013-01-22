@@ -1,27 +1,17 @@
-2013/01/20-21:05:59.012419 b0104000             Options.comparator: leveldb.InternalKeyComparator
-2013/01/20-21:05:59.012484 b0104000      Options.create_if_missing: 1
-2013/01/20-21:05:59.012501 b0104000        Options.error_if_exists: 0
-2013/01/20-21:05:59.012513 b0104000        Options.paranoid_checks: 0
-2013/01/20-21:05:59.012524 b0104000                    Options.env: 0x7fc5d051ab40
-2013/01/20-21:05:59.012536 b0104000               Options.info_log: 0x7fc5d24114a0
-2013/01/20-21:05:59.012550 b0104000      Options.write_buffer_size: 4194304
-2013/01/20-21:05:59.012572 b0104000         Options.max_open_files: 20
-2013/01/20-21:05:59.012592 b0104000            Options.block_cache: 0x7fc5d4034e00
-2013/01/20-21:05:59.012611 b0104000             Options.block_size: 4096
-2013/01/20-21:05:59.012628 b0104000 Options.block_restart_interval: 16
-2013/01/20-21:05:59.012641 b0104000            Options.compression: 1
-2013/01/20-21:05:59.012652 b0104000          Options.filter_policy: NULL
-2013/01/20-21:05:59.012664 b0104000                         crc32c: hardware
-2013/01/20-21:05:59.222861 b0104000 Recovering log #50
-2013/01/20-21:05:59.304324 b0104000 Level-0 table #52: started
-2013/01/20-21:05:59.698723 b0104000 Level-0 table #52: 188 bytes, 2 keys OK
-2013/01/20-21:05:59.856793 b0104000 Delete type=0 #50
-2013/01/20-21:05:59.856875 b0104000 Delete type=3 #48
-2013/01/20-21:05:59.857266 b2559000 Compacting 4@0 + 0@1 files
-2013/01/20-21:06:00.636644 b2559000 Generated table #54: 2 keys, 188 bytes
-2013/01/20-21:06:00.636670 b2559000 Compacted 4@0 + 0@1 files => 188 bytes
-2013/01/20-21:06:00.966937 b2559000 compacted to: files[ 0 1 0 0 0 0 0 ]
-2013/01/20-21:06:01.382960 b2559000 Delete type=2 #35
-2013/01/20-21:06:01.383075 b2559000 Delete type=2 #38
-2013/01/20-21:06:01.401903 b2559000 Delete type=2 #49
-2013/01/20-21:06:01.402056 b2559000 Delete type=2 #52
+2013/01/22-09:40:26.308921 b310d000             Options.comparator: leveldb.InternalKeyComparator
+2013/01/22-09:40:26.308979 b310d000      Options.create_if_missing: 1
+2013/01/22-09:40:26.308993 b310d000        Options.error_if_exists: 0
+2013/01/22-09:40:26.309003 b310d000        Options.paranoid_checks: 0
+2013/01/22-09:40:26.309012 b310d000                    Options.env: 0x7fb9e0e36330
+2013/01/22-09:40:26.309021 b310d000               Options.info_log: 0x7fb9e0e3a170
+2013/01/22-09:40:26.309030 b310d000      Options.write_buffer_size: 4194304
+2013/01/22-09:40:26.309039 b310d000         Options.max_open_files: 20
+2013/01/22-09:40:26.309048 b310d000            Options.block_cache: 0x7fb9e2095e00
+2013/01/22-09:40:26.309057 b310d000             Options.block_size: 4096
+2013/01/22-09:40:26.309066 b310d000 Options.block_restart_interval: 16
+2013/01/22-09:40:26.309075 b310d000            Options.compression: 1
+2013/01/22-09:40:26.309083 b310d000          Options.filter_policy: NULL
+2013/01/22-09:40:26.309092 b310d000                         crc32c: hardware
+2013/01/22-09:40:26.737385 b310d000 Recovering log #53
+2013/01/22-09:40:27.251819 b310d000 Delete type=0 #53
+2013/01/22-09:40:27.251942 b310d000 Delete type=3 #51

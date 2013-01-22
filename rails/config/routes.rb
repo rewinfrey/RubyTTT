@@ -1,4 +1,19 @@
 Railsttt::Application.routes.draw do
+  resources :ttt_games do
+    collection do
+      post 'create_game'
+      get  'show'
+      get  'game_list'
+    end
+    member do
+      post 'update_game'
+      get  'next_move'
+      get  'load_game'
+      get  'move_history'
+      get  'get_game'
+    end
+  end
+
   resources :game do
     collection do
       get  'game_index'

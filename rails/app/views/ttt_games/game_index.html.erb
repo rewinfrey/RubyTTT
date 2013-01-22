@@ -1,0 +1,9 @@
+<%= link_to "New Game", new_game_path %>
+
+<div id="index">
+  <ul>
+    <% @games.each do |game| %>
+      <li><a href="<%=game%>/load_game"><%= game %></a>(<%= game.status %>)</li>
+  <% end %>
+  </ul>
+</div>

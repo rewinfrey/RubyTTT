@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= link_to "New Game", new_ttt_game_path %><br />
+<%= link_to "All Games", game_list_ttt_games_path %>
 <%= yield %>
 </body>
 </html>

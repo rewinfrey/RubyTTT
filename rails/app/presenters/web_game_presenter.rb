@@ -7,7 +7,7 @@ module WebGamePresenter
             else
               raise ArgumentError, "Unknown board: #{board.inspect}"
             end
-    klass.new board: options[:board], id: options[:id], core: options[:core]
+    klass.new board: options[:board], id: options[:id]
   end
 
   class Base
@@ -15,7 +15,6 @@ module WebGamePresenter
     def initialize(options)
       self.board = options.fetch :board
       self.id    = options.fetch :id
-      self.core  = options.fetch(:core, false)
     end
 
     def board
@@ -28,18 +27,10 @@ module WebGamePresenter
     end
 
     def generate_form(index)
-      if core
-        %Q(<form id="#{index}" class="core_untaken_square" accept-charset="UTF-8" action="/game/#{id}/mark_move" method="post"><input type="hidden" name="move" value="#{index}"></form>)
-      else
-        %Q(<form id="#{index}" class="untaken_square" accept-charset="UTF-8" action="/web_games/#{id}/mark_move" method="post"><input type="hidden" name="move" value="#{index}"></form>)
-      end
+      %Q(<form id="#{index}" class="untaken_square" accept-charset="UTF-8" action="/ttt_games/#{id}/update_game" method="post"><input type="hidden" name="move" value="#{index}"></form>)
     end
 
-    def determine_untaken_square_class
-      core ? "core_untaken" : "untaken"
-    end
-
-    attr_accessor :board, :id, :core
+    attr_accessor :board, :id
   end
 
   class ThreeByThree < Base
@@ -48,7 +39,7 @@ module WebGamePresenter
       board[].each_with_index do |square, index|
         html_string += "</tr><tr>" if index % 3 == 0 && index != 0
         if square == " "
-          html_string += %Q(#{generate_form(index) unless board.finished?}<td value="#{index}" class="square #{determine_untaken_square_class} #{square_class(index)}"></td>)
+          html_string += %Q(#{generate_form(index) unless board.finished?}<td value="#{index}" class="square untaken #{square_class(index)}"></td>)
         else
           html_string += %Q(<td id="#{index}" name="move" class="square #{side_class(square)} #{square_class(index)}">#{square}</td>)
         end
@@ -77,7 +68,7 @@ module WebGamePresenter
       board[].each_with_index do |square, index|
         html_string += "</tr><tr>" if index % 4 == 0 && index != 0
         if square == " "
-          html_string += %Q(#{generate_form(index) unless board.finished?}<td value="#{index}" class="square #{determine_untaken_square_class} #{square_class(index)}"></td>)
+          html_string += %Q(#{generate_form(index) unless board.finished?}<td value="#{index}" class="square untaken #{square_class(index)}"></td>)
         else
           html_string += %Q(<td id="#{index}" class="square #{side_class(square)} #{square_class(index)}">#{square}</td>)
         end
@@ -115,7 +106,7 @@ module WebGamePresenter
         board_level.each_with_index do |square, index|
           html_string += "</tr><tr>" if index % 3 == 0 && index != 0
           if square == " "
-            html_string += %Q(#{generate_form(index + (board_level_index * 9)) unless board.finished?}<td value="#{index + (board_level_index * 9)}" class="square #{determine_untaken_square_class} #{square_class(index)}"></td>)
+            html_string += %Q(#{generate_form(index + (board_level_index * 9)) unless board.finished?}<td value="#{index + (board_level_index * 9)}" class="square untaken #{square_class(index)}"></td>)
           else
             html_string += %Q(<td id="#{index}" class="square #{side_class(square)} #{square_class(index)}">#{square}</td>)
           end

@@ -90,14 +90,6 @@ module TTT
       end
     end
 
-    def winner(id)
-      if game = game_interactor.get_game(id)
-        game_interactor.winner(game)
-      else
-        nil
-      end
-    end
-
     def draw?(id)
       if game = game_interactor.get_game(id)
         game_interactor.draw?(game)

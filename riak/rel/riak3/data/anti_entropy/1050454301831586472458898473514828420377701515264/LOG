@@ -1,17 +1,17 @@
-2013/01/20-21:07:19.165716 b0499000             Options.comparator: leveldb.InternalKeyComparator
-2013/01/20-21:07:19.165748 b0499000      Options.create_if_missing: 1
-2013/01/20-21:07:19.165756 b0499000        Options.error_if_exists: 0
-2013/01/20-21:07:19.165761 b0499000        Options.paranoid_checks: 0
-2013/01/20-21:07:19.165766 b0499000                    Options.env: 0x7ff0fa32cfa0
-2013/01/20-21:07:19.165771 b0499000               Options.info_log: 0x7ff0f854c070
-2013/01/20-21:07:19.165775 b0499000      Options.write_buffer_size: 4194304
-2013/01/20-21:07:19.165780 b0499000         Options.max_open_files: 20
-2013/01/20-21:07:19.165785 b0499000            Options.block_cache: 0x7ff0f90e2800
-2013/01/20-21:07:19.165790 b0499000             Options.block_size: 4096
-2013/01/20-21:07:19.165795 b0499000 Options.block_restart_interval: 16
-2013/01/20-21:07:19.165799 b0499000            Options.compression: 1
-2013/01/20-21:07:19.165804 b0499000          Options.filter_policy: NULL
-2013/01/20-21:07:19.165809 b0499000                         crc32c: hardware
-2013/01/20-21:07:19.228811 b0499000 Recovering log #40
-2013/01/20-21:07:19.349715 b0499000 Delete type=0 #40
-2013/01/20-21:07:19.349797 b0499000 Delete type=3 #39
+2013/01/22-09:42:17.361628 b1370000             Options.comparator: leveldb.InternalKeyComparator
+2013/01/22-09:42:17.361689 b1370000      Options.create_if_missing: 1
+2013/01/22-09:42:17.361711 b1370000        Options.error_if_exists: 0
+2013/01/22-09:42:17.361727 b1370000        Options.paranoid_checks: 0
+2013/01/22-09:42:17.361743 b1370000                    Options.env: 0x7f9682d24350
+2013/01/22-09:42:17.361759 b1370000               Options.info_log: 0x7f9682c45200
+2013/01/22-09:42:17.361775 b1370000      Options.write_buffer_size: 4194304
+2013/01/22-09:42:17.361791 b1370000         Options.max_open_files: 20
+2013/01/22-09:42:17.361807 b1370000            Options.block_cache: 0x7f96832b3200
+2013/01/22-09:42:17.361822 b1370000             Options.block_size: 4096
+2013/01/22-09:42:17.361836 b1370000 Options.block_restart_interval: 16
+2013/01/22-09:42:17.361850 b1370000            Options.compression: 1
+2013/01/22-09:42:17.361864 b1370000          Options.filter_policy: NULL
+2013/01/22-09:42:17.361877 b1370000                         crc32c: hardware
+2013/01/22-09:42:17.447199 b1370000 Recovering log #42
+2013/01/22-09:42:17.736530 b1370000 Delete type=0 #42
+2013/01/22-09:42:17.736632 b1370000 Delete type=3 #41

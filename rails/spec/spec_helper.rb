@@ -6,8 +6,8 @@ require File.expand_path("../../config/environment", __FILE__)
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', '..', 'lib'))
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'ttt/game'
-require 'ttt/game_builder'
+require 'ttt/context'
+require 'ttt/setup'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,

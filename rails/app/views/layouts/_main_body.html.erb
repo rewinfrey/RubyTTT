@@ -1,0 +1,7 @@
+<div style="width: 1020px; margin: 100px auto 20px auto;">
+  <% if flash[:notice] %>
+    <h4 class="notice"><%= flash[:notice] %></h4>
+  <% end %>
+  <%= @web_game_presenter.show_board.html_safe %>
+</div>
+<div id="move_index" data="<%= @move_index %>"></div>
