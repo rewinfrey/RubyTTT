@@ -41,7 +41,7 @@ task :launch_riak do
   puts   "-- cluster ring forming --"
   puts   "-- checking ring status --"
   system "cd riak/rel; riak/bin/riak-admin ring_status"
-  puts   "-- if status is up, but not available, Riak is still configuring the ring, but is accessible"
+  puts   "-- if status is up, but ring is not ready, Riak is still configuring the ring, but the datastore is accessible"
 end
 
 task :stop_riak do
@@ -67,4 +67,8 @@ task :dump_riak do
       puts "success dumping key: #{key}"
     end
   end
+end
+
+task :riak_status do
+  system('riak/rel/riak/bin/riak-admin ring_status')
 end

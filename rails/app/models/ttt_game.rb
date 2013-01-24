@@ -3,9 +3,15 @@ require 'yaml'
 class TttGame
   def self.process_game(id, context)
     if context.finished?(id)
-     "end_game"
+      if context.winner?(id)
+        winner = context.winner(id) + " is the winner!"
+        return winner, "end_game"
+      else
+        return "It's a draw", "end_game"
+      end
     else
-      "show"
+      player = context.which_current_player?(id) + "'s turn."
+      return player, "show"
     end
   end
 

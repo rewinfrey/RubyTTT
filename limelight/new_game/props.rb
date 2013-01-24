@@ -16,5 +16,6 @@ ttt do
 
   setup_button_row do
     setup_button :players => "button", :id  => "setup_button", :text => "Start Game"
+    main_menu :players => "button", :id => "main_menu", :text => "Main Menu"
   end
 end

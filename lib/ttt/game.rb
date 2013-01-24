@@ -15,7 +15,7 @@ module TTT
     end
 
     def which_board
-      board.type
+      board.board_type
     end
 
     def next_move
@@ -41,6 +41,18 @@ module TTT
 
     def show_history
       history.show
+    end
+
+    def adjust_move_index(index_diff)
+      history.adjust_move_index(index_diff)
+    end
+
+    def get_history_board(move_number_limit = history.move_traverser.move_index)
+      history.get_history_board(board, move_number_limit)
+    end
+
+    def initialize_history
+      history.initialize_history
     end
 
     def switch_player

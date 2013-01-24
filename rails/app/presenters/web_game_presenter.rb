@@ -26,6 +26,14 @@ module WebGamePresenter
       'o_taken_square'
     end
 
+    def next_player_move
+      if TTT::Context.instance.ai_move?(id)
+        "ai"
+      else
+        "human"
+      end
+    end
+
     def generate_form(index)
       %Q(<form id="#{index}" class="untaken_square" accept-charset="UTF-8" action="/ttt_games/#{id}/update_game" method="post"><input type="hidden" name="move" value="#{index}"></form>)
     end
@@ -39,7 +47,7 @@ module WebGamePresenter
       board[].each_with_index do |square, index|
         html_string += "</tr><tr>" if index % 3 == 0 && index != 0
         if square == " "
-          html_string += %Q(#{generate_form(index) unless board.finished?}<td value="#{index}" class="square untaken #{square_class(index)}"></td>)
+          html_string += %Q(#{generate_form(index) unless board.finished?}<td value="#{index}" class="square #{next_player_move} #{square_class(index)}"></td>)
         else
           html_string += %Q(<td id="#{index}" name="move" class="square #{side_class(square)} #{square_class(index)}">#{square}</td>)
         end
@@ -68,7 +76,7 @@ module WebGamePresenter
       board[].each_with_index do |square, index|
         html_string += "</tr><tr>" if index % 4 == 0 && index != 0
         if square == " "
-          html_string += %Q(#{generate_form(index) unless board.finished?}<td value="#{index}" class="square untaken #{square_class(index)}"></td>)
+          html_string += %Q(#{generate_form(index) unless board.finished?}<td value="#{index}" class="square #{next_player_move} #{square_class(index)}"></td>)
         else
           html_string += %Q(<td id="#{index}" class="square #{side_class(square)} #{square_class(index)}">#{square}</td>)
         end
@@ -106,7 +114,7 @@ module WebGamePresenter
         board_level.each_with_index do |square, index|
           html_string += "</tr><tr>" if index % 3 == 0 && index != 0
           if square == " "
-            html_string += %Q(#{generate_form(index + (board_level_index * 9)) unless board.finished?}<td value="#{index + (board_level_index * 9)}" class="square untaken #{square_class(index)}"></td>)
+            html_string += %Q(#{generate_form(index + (board_level_index * 9)) unless board.finished?}<td value="#{index + (board_level_index * 9)}" class="square #{next_player_move} #{square_class(index)}"></td>)
           else
             html_string += %Q(<td id="#{index}" class="square #{side_class(square)} #{square_class(index)}">#{square}</td>)
           end

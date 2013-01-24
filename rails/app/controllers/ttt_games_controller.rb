@@ -23,7 +23,8 @@ class TttGamesController < ApplicationController
     @web_game_presenter = WebGamePresenter.for(board: @game.board, id: cookies[:game_id])
     @web_game_history   = @context.get_history(cookies[:game_id])
     @id                 = cookies[:game_id]
-    render TttGame.process_game(cookies[:game_id], @context)
+    flash[:notice], view_file = TttGame.process_game(cookies[:game_id], @context)
+    render view_file
   end
 
   def game_list
@@ -49,7 +50,8 @@ class TttGamesController < ApplicationController
 
     @web_game_presenter = WebGamePresenter.for(board: history_board, id: cookies[:game_id])
     cookies[:last_id]   = cookies[:game_id]
-    render "end_game"
+    flash[:notice], view_file = TttGame.process_game(cookies[:game_id], @context)
+    render view_file
   end
 
   def update_game

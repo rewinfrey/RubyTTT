@@ -1,21 +1,57 @@
 class GamePlayscript
-  attr_accessor :context, :game
+  attr_accessor :context, :game_id, :production
   def initialize(options)
-    self.context = options.fetch(:context)
-    self.game    = options.fetch(:game)
+    self.context    = options.fetch(:context)
+    self.game_id    = options.fetch(:game_id)
+    self.production = options.fetch(:production)
+    self
+  end
+
+  def initialize_history
+    production.context.initialize_history(game_id)
+  end
+
+  def view_history(index_diff)
+    game = production.context.get_game(game_id)
+    game.adjust_move_index(index_diff)
+    production.context.save_game(game_id, game)
+    process_game_history
+  end
+
+  def process_game_history
+    history_board = production.context.get_history_board(game_id)
+    update_context_board(history_board)
+  end
+
+  def display_results
+    update_context_board
+    display_move_history
+    game_over_prompt
+  end
+
+  def game_move_index
+    context.get_history(game_id).length
+  end
+
+  def current_move_index
+    production.move_index
+  end
+
+  def generate_history_board
+    game = context.get_game(game_id)
+    game.history.move_traverser.adjust_move_index(production.move_index)
+    game.history.move_traverser.history_board_builder(game.board, production.move_index)
   end
 
   def player_move(cell)
     @move = cell.id
     return unless valid_move? && not_finished?
     mark_move
-    record_move
-    switch_player
     update_context_board
     update_move_history
     prompt_next_player
-    game_over_prompt if finished?
-    process_ai_move
+    display_results if finished?
+    process_ai_move unless finished?
   end
 
   def process_ai_move
@@ -24,7 +60,7 @@ class GamePlayscript
     update_context_board
     update_move_history
     prompt_next_player
-    game_over_prompt if finished?
+    display_results if finished?
     if next_move_is_ai? && not_finished?
       sleep 1
       process_ai_move
@@ -32,7 +68,7 @@ class GamePlayscript
   end
 
   def which_board?
-    @game.which_board?
+    production.context.which_board(@game_id)
   end
 
   def set_move(cell)
@@ -50,59 +86,68 @@ class GamePlayscript
 
   def game_over_prompt
     if winner?
-      @context.find_by_id("player_turn").text = winner
+      @context.find_by_id("player_turn").text = "#{winner} is the winner!"
     else
       @context.find_by_id("player_turn").text = "It's a draw"
     end
   end
 
-  def update_context_board
-    board.each_with_index do |square, index|
+  def update_context_board(new_board = board)
+    new_board.each_with_index do |square, index|
       @context.find_by_id("square_text_#{index}").text = square
     end
   end
 
   def update_move_history
-    history = @game.show_history
+    history = production.context.get_history(@game_id)
     size    = history.size
-    value   = history[size]
-    @context.find_by_id("move_history").text += "\n#{value[:side]} #{value[:move]}"
+    value   = history[size - 1]
+    @context.find_by_id("move_history").text += "\n#{value.side} #{value.move}"
+  end
+
+  def display_move_history
+    history = production.context.get_history(@game_id)
+    result_string = ''
+    history.each do |value|
+      @context.find_by_id("move_history").text += "\n#{value.side} #{value.move}"
+    end
   end
 
   def prompt_next_player
-    @context.find_by_id("player_turn").text = "#{which_current_player?} turn"
+    @context.find_by_id("player_turn").text = "#{which_current_player?}'s turn"
   end
 
   def ai_move
-    @game.next_move
+    production.context.ai_move(@game_id)
   end
 
   def next_move_is_ai?
-    @game.ai_move?
+    production.context.ai_move?(@game_id)
   end
 
   def mark_move
-    @game.mark_move(move)
+    player = production.context.which_current_player?(@game_id)
+    production.context.update_game(@game_id, move, player_side(player))
   end
 
-  def record_move
-    @game.record_move(move)
-  end
-
-  def switch_player
-    @game.switch_player
+  def player_side(player_num)
+    if player_num == "Player 1"
+      "x"
+    else
+      "o"
+    end
   end
 
   def board
-    @game.board[]
+    production.context.board(@game_id)
   end
 
   def which_current_player?
-    @game.which_current_player?
+    production.context.which_current_player?(@game_id)
   end
 
   def finished?
-    @game.board.finished?
+    production.context.finished?(@game_id)
   end
 
   def not_finished?
@@ -110,19 +155,14 @@ class GamePlayscript
   end
 
   def winner?
-    @game.board.winner?
+    production.context.winner?(@game_id)
   end
 
   def winner
-    @game.switch_player
-    if @game.current_player == @game.player1
-      "Player 1 is the winner"
-    else
-      "Player 2 is the winner"
-    end
+    production.context.winner(@game_id)
   end
 
   def valid_move?
-    @game.board.free?(move)
+    production.context.valid_move?(@game_id, move)
   end
 end

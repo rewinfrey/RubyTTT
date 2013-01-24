@@ -30,7 +30,7 @@ module TTT
       false
     end
 
-    def type
+    def board_type
       "three_by_three_by_three"
     end
   end

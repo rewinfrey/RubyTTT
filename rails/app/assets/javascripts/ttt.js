@@ -1,10 +1,9 @@
 $(document).ready( function(){
-  $('td.untaken').click(mark_move);
+  $('td.human').click(mark_move);
   $('.current_player').bind(next_move);
   $('#button_right').click(next_history_move);
   $('#button_left').click(prev_history_move);
   window.setTimeout( function() { next_move()}, 1500);
-  window.setTimeout( function() { core_next_move()}, 1500);
 });
 
 function mark_move() {

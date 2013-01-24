@@ -1,3 +1,5 @@
+require 'ttt/setup'
+
 module TTT
   class Context
     class << self
@@ -7,6 +9,11 @@ module TTT
 
       private :new
    end
+
+    def self.game_list
+      instance.setup = TTT::Setup
+      instance.game_list
+    end
 
     def setup=(setup_const)
       @setup = setup_const.new
@@ -82,6 +89,14 @@ module TTT
       end
     end
 
+    def winner(id)
+      if game = game_interactor.get_game(id)
+        game_interactor.winner(game)
+      else
+        nil
+      end
+    end
+
     def winner?(id)
       if game = game_interactor.get_game(id)
         game_interactor.winner?(game)
@@ -109,6 +124,39 @@ module TTT
     def valid_move?(id, move)
       if game = game_interactor.get_game(id)
         game_interactor.valid_move?(game, move)
+      else
+        nil
+      end
+    end
+
+    def adjust_move_index(id, value)
+      if game = game_interactor.get_game(id)
+        game_interactor.adjust_move_index(game, value)
+      else
+        nil
+      end
+    end
+
+    def get_history_board(id)
+      if game = game_interactor.get_game(id)
+        game_interactor.get_history_board(game)
+      else
+        nil
+      end
+    end
+
+    def initialize_history(id)
+      if game = game_interactor.get_game(id)
+        game_interactor.initialize_history(game)
+        save_game(id, game)
+      else
+        nil
+      end
+    end
+
+    def get_move_index(id)
+      if game = game_interactor.get_game(id)
+        game_interactor.get_move_index(game)
       else
         nil
       end

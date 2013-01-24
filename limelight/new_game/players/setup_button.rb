@@ -1,6 +1,6 @@
 on_button_pushed do
   production.game_id = production.context.create_game(player1, player2, board)
-  production.open_scene(board_const(production.context.which_board(production.game_id)))
+  production.open_scene(production.context.which_board(production.game_id))
 end
 
 private
@@ -18,12 +18,4 @@ end
 
 def board
   scene.find("board").drop_down.value
-end
-
-def board_const(arg)
-  case arg
-  when "three_by_three"          then "ThreeByThree"
-  when "four_by_four"            then "FourByFour"
-  when "three_by_three_by_three" then "ThreeByThreeByThree"
-  end
 end

@@ -7,8 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to "New Game", new_ttt_game_path %><br />
-<%= link_to "All Games", game_list_ttt_games_path %>
+  <div class="main_buttons">
+    <div class="new_game_btn_wrapper">
+      <%= link_to "New Game", new_ttt_game_path, :class => "button" %>
+    </div>
+    <div class="all_games_btn_wrapper">
+      <%= link_to "All Games", game_list_ttt_games_path, :class => "button" %>
+    </div>
+  </div>
 <%= yield %>
 </body>
 </html>

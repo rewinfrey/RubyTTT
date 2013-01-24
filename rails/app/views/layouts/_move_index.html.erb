@@ -2,7 +2,12 @@
   <h4 style="text-align: center;">Move History</h4>
   <ul style="width: 215px;">
     <% @web_game_history.each_with_index do |move, index| %>
-      <li style="padding: 10px 70px;"><%= index %>.    <%= move.side %>:     <%= move.move %>
+      <% if index == 0 %>
+        <% move_list_class = "move_list_first" %>
+      <% else %>
+        <% move_list_class = "move_list" %>
+      <% end %>
+        <li class="<%= move_list_class %>"><span style="margin-right: 10px;"><%= index + 1  %>)</span>  <span style="margin-right: 10px;"><%= move.side %></span> <%= move.move %>
     <% end %>
   </ul>
 </div>
