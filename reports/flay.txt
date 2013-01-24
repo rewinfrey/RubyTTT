@@ -1,7 +1,0 @@
-Total score (lower is better) = 54
-
-
-1) Similar code found in :call (mass = 54)
-  lib/ttt/view.rb:17
-  lib/ttt/view.rb:19
-  lib/ttt/view.rb:21
