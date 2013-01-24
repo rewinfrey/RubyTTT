@@ -1,2 +1,3 @@
 reports/**/*
 coverage/**/*
+.DS_Store
