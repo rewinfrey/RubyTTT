@@ -8,6 +8,10 @@ module TTT
       self.game_history = game_history
     end
 
+    def initialize_history
+      self.move_index = max_length
+    end
+
     def max_length
       game_history.history.length
     end
@@ -22,7 +26,7 @@ module TTT
       end
     end
 
-    def history_board_builder(board, move_number_limit)
+    def history_board_builder(board, move_number_limit = move_index)
       total_moves    = game_history.history.length
       clone_board    = YAML.load(YAML.dump(board))
       clean_board(clone_board)

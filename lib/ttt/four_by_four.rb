@@ -55,7 +55,7 @@ module TTT
       false
     end
 
-    def type
+    def board_type
       "four_by_four"
     end
   end

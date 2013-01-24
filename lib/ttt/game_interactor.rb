@@ -66,6 +66,14 @@ module TTT
       game.show_history
     end
 
+    def get_history_board(game)
+      game.get_history_board
+    end
+
+    def initialize_history(game)
+      game.initialize_history
+    end
+
     def switch_player(game)
       game.switch_player
     end
@@ -90,6 +98,14 @@ module TTT
 
     def record_move(game, cell, side)
       game.record_move(cell, side)
+    end
+
+    def adjust_move_index(game, value)
+      game.history.move_traverser.adjust_move_index(value)
+    end
+
+    def get_move_index(game)
+      game.history.move_traverser.move_index
     end
 
     private

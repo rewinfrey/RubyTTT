@@ -1,7 +1,6 @@
 on_button_pushed do
-  game_builder    = TTT::GameBuilder.new
-  production.game = game_builder.new_game(:player1 => player1, :player2 => player2, :board => board)
-  production.open_scene(production.game.which_board?)
+  production.game_id = production.context.create_game(player1, player2, board)
+  production.open_scene(production.context.which_board(production.game_id))
 end
 
 private

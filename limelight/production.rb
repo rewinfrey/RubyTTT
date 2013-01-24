@@ -3,11 +3,12 @@ $:.unshift File.dirname(__FILE__)
 
 require 'rubygems'
 require "playscripts/game_playscript"
-require 'ttt/game'
-require 'ttt/game_builder'
+require 'ttt/setup'
+require 'ttt/context'
 
 on_production_loaded do
-  backstage_pass :game
+  backstage_pass :context
+  backstage_pass :game_id
   backstage_pass :limelight_game
-  backstage_pass :game_builder
+  backstage_pass :move_index
 end

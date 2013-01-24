@@ -1,7 +1,43 @@
+setup_list {
+  text_color :white
+  font_size 20
+  width "50%"
+  horizontal_alignment :right
+  vertical_alignment :top
+  right_margin 20
+  bottom_margin 20
+}
+
+type_list {
+  text_color :black
+  font_size 20
+  width "50%"
+  horizontal_alignment :left
+  left_margin 20
+}
+
+setup_button_row {
+  width "100%"
+  horizontal_alignment :center
+}
+
+row {
+  height "10%"
+  width "100%"
+}
+
+third {
+  width "33%"
+}
+
+half {
+  width "50%"
+}
+
 ttt {
   background_color :gray
-  height "100%"
-  width "100%"
+  height 800
+  width 1200
 }
 
 title {
@@ -64,4 +100,20 @@ above_square {
 
 left_of_square {
   right_border_width 5
+}
+
+move_button_row {
+  float :on
+  x 472
+  y 720
+  background_color :gray
+  width "100%"
+}
+
+left_button {
+  horizontal_alignment :center
+}
+
+right_button {
+  horizontal_alignment :center
 }

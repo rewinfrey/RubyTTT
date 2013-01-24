@@ -1,191 +1,218 @@
 require 'spec_helper'
 require 'playscripts/game_playscript'
 require 'rubygems'
-require '/Users/rickwinfrey/.rvm/gems/jruby-1.6.6@limelightv0.6.19/gems/riak-client-1.1.1/lib/riak'
-require 'ttt/game_builder'
+require 'ttt/context'
+require 'ttt/setup'
 
 describe "GamePlayscript" do
+  let(:context) { TTT::Context.instance }
 
-  let(:players) { TTT::GameBuilder.new.players }
-  let(:boards)  { TTT::GameBuilder.new.boards  }
-  let(:game)    { TTT::GameBuilder.new.new_game(:player1 => players[0], :player2 => players[1], :board => boards[0]) }
-  let(:ai_game) { TTT::GameBuilder.new.new_game(:player1 => players[1], :player2 => players[1], :board => boards[0]) }
-
-  let(:scene)   { double('scene', :name => "ttt") }
-
-  let(:limelight) { GamePlayscript.new(:context => scene, :game => game) }
-
-  describe "scene name" do
-    it "is three_by_three" do
-      scene.name.should == "ttt"
-    end
+  before(:each) do
+    context.setup = TTT::Setup
+    players    = context.players
+    boards     = context.boards
+    ai_game_id = context.create_game(players[1], players[1], boards[0])
+    game_id    = context.create_game(players[0], players[0], boards[0])
+    production = stub(:context => context)
+    @ai_game_ps   = GamePlayscript.new(:context => context, :game_id => ai_game_id, :production => production)
+    @game_ps      = GamePlayscript.new(:context => context, :game_id => game_id, :production => production)
+    @game         = @game_ps.context.get_game(@game_ps.game_id)
+    @ai_game      = @ai_game_ps.context.get_game(@ai_game_ps.game_id)
+    @game_id      = @game_ps.game_id
+    @ai_id        = @ai_game_ps.game_id
   end
 
-  describe "#context=" do
-    it "sets the context (scene)" do
-      scene.eql? limelight.context
-    end
+  def save_game(id, game)
+    context.save_game(id, game)
   end
 
   describe "#set_move" do
+    before(:each) do
+      @mock_move = double('move')
+    end
+
     it "sets the player's move from a board square for squares 0 - 8" do
-      mock_move = double('move')
-      mock_move.should_receive(:id).and_return("square1")
-      limelight.set_move(mock_move)
-      limelight.move.should == 1
+      @mock_move.should_receive(:id).and_return("square1")
+      @game_ps.set_move(@mock_move)
+      @game_ps.move.should == 1
     end
 
     it "sets the player's move from a board square for squares 9 - 26" do
-      mock_move = double('move')
-      mock_move.should_receive(:id).and_return("square22")
-      limelight.set_move(mock_move)
-      limelight.move.should == 22
+      @mock_move.should_receive(:id).and_return("square22")
+      @game_ps.set_move(@mock_move)
+      @game_ps.move.should == 22
     end
   end
 
   describe "#which_current_player?" do
     it "returns 'Player 1' when it's player1's turn" do
-      limelight.which_current_player?.should == "Player 1"
+      @game_ps.which_current_player?.should == "Player 1"
     end
 
     it "returns 'Player 2' when it's player2's turn" do
-      limelight.game.current_player = limelight.game.player2
-      limelight.which_current_player?.should == "Player 2"
+      @game.current_player = @game.player2
+      save_game(@game_id, @game)
+      @game_ps.which_current_player?.should == "Player 2"
     end
   end
 
   describe "#finished?" do
     it "returns true when the game board is full" do
-      limelight.game.board[] = Array.new(8, 'x')
-      limelight.finished?.should == true
+      @game.board.board = %w(a b c d e f g h i)
+      save_game(@game_id, @game)
+      @game_ps.finished?.should == true
     end
 
     it "returns false when the game board contains a blank space (means free square)" do
-      limelight.game.board[] = Array.new(8, " ")
-      limelight.finished?.should == false
+      @game.board.board = Array.new(9, " ")
+      save_game(@game_id, @game)
+      @game_ps.finished?.should == false
     end
   end
 
   describe "#not_finished?" do
     it "returns true when the game is not finished" do
-      limelight.not_finished?.should == true
+      @game_ps.not_finished?.should == true
     end
 
     it "returns false when the game is finished" do
-      limelight.game.board[] = [0,1,2,3,4,5,6,7,8]
-      limelight.not_finished?.should == false
+      @game.board.board = [0,1,2,3,4,5,6,7,8]
+      save_game(@game_id, @game)
+      @game_ps.not_finished?.should == false
     end
   end
 
   describe "#finished" do
     it "returns true when the game is over" do
-      limelight.game.board[] = ['x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x', 'o']
-      limelight.finished?.should == true
+      @game.board.board = ['x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x', 'o']
+      save_game(@game_id, @game)
+      @game_ps.finished?.should == true
     end
 
     it "returns false when the game isn't over yet" do
-      limelight.finished?.should == false
+      @game_ps.finished?.should == false
     end
   end
 
   describe "#winner" do
     before(:each) do
-      limelight.game.board[] = ['x', 'x', 'x', '', '', '', '', '', '']
+      @game.board.board = ['x', 'x', 'x', '', '', '', '', '', '']
+      save_game(@game_id, @game)
     end
 
     it "displays `Player 1 is the winner` when player 1 wins" do
-      limelight.game.current_player = limelight.game.player2
-      limelight.winner.should == "Player 1 is the winner"
+      @game.current_player = @game.player2
+      save_game(@game_id, @game)
+      @game_ps.winner.should == "Player 1"
    end
 
     it "displays `Player 2 is the winner` when player 2 wins" do
-      limelight.game.current_player = limelight.game.player1
-      limelight.winner.should == "Player 2 is the winner"
+      @game_ps.winner.should == "Player 2"
     end
   end
 
 
   describe "#winner?" do
     it "returns true when the game has a winner" do
-      limelight.game.board[] = ['x', 'x', 'x', '', '', '', '', '', '']
-      limelight.winner?.should == true
+      @game.board.board = ['x', 'x', 'x', '', '', '', '', '', '']
+      save_game(@game_id, @game)
+      @game_ps.winner?.should == true
     end
 
     it "returns false when the game does not have a winner" do
-      limelight.game.board[] = ['y', 't', 'z', 'c', 'h', 'g', 'c', 'p', 'q']
-      limelight.winner?.should == false
+      @game.board.board = ['y', 't', 'z', 'c', 'h', 'g', 'c', 'p', 'q']
+      save_game(@game_id, @game)
+      @game_ps.winner?.should == false
     end
   end
 
   describe "#valid_move?" do
+    before(:each) do
+      @mock_move = double('move')
+      @mock_move.should_receive(:id).and_return("square1")
+    end
+
     it "returns true when the move is valid" do
-      mock_move = double('move')
-      mock_move.should_receive(:id).and_return("square1")
-      limelight.set_move(mock_move)
-      limelight.valid_move?.should == true
+      @game_ps.set_move(@mock_move)
+      @game_ps.valid_move?.should == true
+    end
+
+    it "returns flase when the move is invalid" do
+      @game.board.board = %w(a b c d e f g h i)
+      save_game(@game_id, @game)
+      @game_ps.set_move(@mock_move)
+      @game_ps.valid_move?.should == false
     end
   end
 
   describe "#next_move_is_ai?" do
     it "returns true when current player is an ai player" do
-      limelight.game = ai_game
-      limelight.next_move_is_ai?.should == true
+      @ai_game_ps.next_move_is_ai?.should == true
     end
 
     it "returns false when the curent player is a human player" do
-      limelight.next_move_is_ai?.should == false
+      @game_ps.next_move_is_ai?.should == false
     end
   end
 
   describe "#board" do
     it "requests the board array from the game" do
-      limelight.game.board[].should == limelight.board
-    end
-  end
-
-  describe "#switch_player" do
-    it "sends a switch_player message to the game" do
-      limelight.game.should_receive(:switch_player)
-      limelight.switch_player
-    end
-  end
-
-  describe "#record_move" do
-    it "sends a record_move message to the game" do
-      limelight.should_receive(:move).and_return(1)
-      limelight.game.should_receive(:record_move)
-      limelight.record_move
+      @game_ps.board.should == @game.board.board
     end
   end
 
   describe "#mark_move" do
     it "sends a mark_move message to the game" do
-      limelight.should_receive(:move).and_return(1)
-      limelight.game.should_receive(:mark_move)
-      limelight.mark_move
+      @game_ps.should_receive(:move).and_return(1)
+      @game_ps.context.should_receive(:update_game).with(@game_id, 1, 'x')
+      @game_ps.mark_move
     end
   end
 
   describe "#ai_move" do
     it "sends a next_move message to the game indicating it's the computer player's turn" do
-      limelight.game.should_receive(:next_move)
-      limelight.ai_move
+      @game_ps.context.should_receive(:ai_move).with(@game_id)
+      @game_ps.ai_move
     end
   end
 
   describe "#which_board" do
     it "returns 'three_by_three' when it's a 3x3 board" do
-      limelight.which_board?.should == "three_by_three"
+      @game_ps.which_board?.should == "three_by_three"
     end
 
     it "returns 'four_by_four' when it's a 4x4 board" do
-      limelight.game.board = TTT::FourByFour.new
-      limelight.which_board?.should == "four_by_four"
+      @game.board = TTT::FourByFour.new
+      save_game(@game_id, @game)
+      @game_ps.which_board?.should == "four_by_four"
     end
 
     it "returns 'three_by_three_by_three' when it's a 3x3x3 board" do
-      limelight.game.board = TTT::ThreeByThreeByThree.new
-      limelight.which_board?.should == "three_by_three_by_three"
+      @game.board = TTT::ThreeByThreeByThree.new
+      save_game(@game_id, @game)
+      @game_ps.which_board?.should == "three_by_three_by_three"
+    end
+  end
+
+  context "user wants to move through a previously played game's move history" do
+    before(:each) do
+      @game.record_move(0, 'x')
+      @game.mark_move(0, 'x')
+      @game.record_move(1, 'o')
+      @game.mark_move(1, 'o')
+      @game.record_move(4, 'x')
+      @game.mark_move(4, 'x')
+      @game.record_move(2, 'o')
+      @game.mark_move(2, 'o')
+      @game.record_move(8, 'x')
+      @game.mark_move(8, 'x')
+      save_game(@game_id, @game)
+    end
+
+    describe "#game_move_index" do
+      it "gets the number of moves made for a completed game" do
+        @game_ps.game_move_index.should == 5
+      end
     end
   end
 end

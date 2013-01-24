@@ -21,5 +21,17 @@ module TTT
     def show
       self.history
     end
+
+    def adjust_move_index(index_diff)
+      move_traverser.adjust_move_index(index_diff)
+    end
+
+    def get_history_board(board, move_number_limit = move_traverser.move_index)
+      move_traverser.history_board_builder(board, move_number_limit)
+    end
+
+    def initialize_history
+      move_traverser.initialize_history
+    end
   end
 end
