@@ -11,11 +11,6 @@ function mark_move() {
   $("#"+id+"").submit();
 }
 
-function core_mark_move() {
-  id = $(this).attr("value");
-  $("#"+id+"").submit();
-}
-
 function next_move() {
   val = $('#current_player').html();
   if (val.trim() == "true") {

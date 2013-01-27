@@ -10,11 +10,6 @@ module TTT
       private :new
    end
 
-    def self.game_list
-      instance.setup = TTT::Setup
-      instance.game_list
-    end
-
     def setup=(setup_const)
       @setup = setup_const.new
     end
@@ -132,6 +127,7 @@ module TTT
     def adjust_move_index(id, value)
       if game = game_interactor.get_game(id)
         game_interactor.adjust_move_index(game, value)
+        game_interactor.save_game(id, game)
       else
         nil
       end
@@ -151,6 +147,12 @@ module TTT
         save_game(id, game)
       else
         nil
+      end
+    end
+
+    def get_history_length(id)
+      if game = game_interactor.get_game(id)
+        game_interactor.get_history_length(game)
       end
     end
 

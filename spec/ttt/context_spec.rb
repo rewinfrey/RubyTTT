@@ -25,6 +25,12 @@ module TTT
       end
     end
 
+    describe "setup" do
+      it "returns a reference to a TTT::Setup object" do
+        context.setup.class.should == TTT::Setup
+      end
+    end
+
     describe "add_game" do
       it "adds a game to the db and returns the id" do
         id = context.add_game(game)
@@ -94,6 +100,11 @@ module TTT
     describe "#game_list" do
       it "returns an array of game ids (Strings)" do
         context.game_list.should_not == []
+      end
+
+      it "gets a list of all game id's from the db" do
+        id = context.add_game(game)
+        context.game_list.include? id
       end
     end
 
@@ -288,6 +299,98 @@ module TTT
 
       it "returns nil if the game associated with an id doesn't exist" do
         context.board(10000000000).should == nil
+      end
+    end
+
+    describe "#adjust_move_index" do
+      before(:each) do
+        game.record_move(1, 'x')
+        game.record_move(2, 'o')
+        game.record_move(3, 'x')
+        game.record_move(4, 'o')
+        @id = context.add_game(game)
+      end
+
+      it "adjusts a game's move traverser move index by -1 when it receives -1" do
+        cur_move_index = game.history.move_traverser.move_index
+        cur_move_index.should == 4
+        context.adjust_move_index(@id, -1)
+        updated_game = context.get_game(@id)
+        updated_game.history.move_traverser.move_index.should == 3
+      end
+
+      it "cannot move to a move index less than 0" do
+        context.adjust_move_index(@id, -4)
+        updated_game = context.get_game(@id)
+        updated_game.history.move_traverser.move_index.should == 0
+        context.adjust_move_index(@id, -3)
+        updated_game = context.get_game(@id)
+        updated_game.history.move_traverser.move_index.should == 0
+      end
+
+      it "cannot move to a move index greater than the max length of a game's move history" do
+        context.adjust_move_index(@id, 100)
+        updated_game = context.get_game(@id)
+        updated_game.history.move_traverser.move_index.should == 4
+      end
+
+      it "adjusts a game's move traverser move index by 1 when it receives 1" do
+        context.adjust_move_index(@id, -2)
+        updated_game = context.get_game(@id)
+        updated_game.history.move_traverser.move_index.should == 2
+        context.adjust_move_index(@id, 1)
+        updated_game = context.get_game(@id)
+        updated_game.history.move_traverser.move_index.should == 3
+      end
+    end
+
+    describe "#get_history_board" do
+      it "returns the game's board as an array" do
+        id = context.add_game(game)
+        context.get_history_board(id).should == Array.new(9, " ")
+      end
+    end
+
+    describe "#initialize_history" do
+      before(:each) do
+        game.record_move(0, 'o')
+        game.record_move(1, 'x')
+        game.record_move(2, 'x')
+        game.record_move(3, 'x')
+        game.record_move(4, 'o')
+        game.record_move(5, 'o')
+        game.record_move(6, 'x')
+        game.record_move(7, 'o')
+        game.record_move(8, 'x')
+        @id = context.add_game(game)
+      end
+
+      it "returns the game's move history index to it the length of the number of moves made in the game" do
+        stored_game = context.get_game(@id)
+        stored_game.history.move_traverser.move_index.should == 9
+        context.adjust_move_index(@id, -9)
+        stored_game = context.get_game(@id)
+        stored_game.history.move_traverser.move_index.should == 0
+        context.initialize_history(@id)
+        stored_game = context.get_game(@id)
+        stored_game.history.move_traverser.move_index.should == 9
+      end
+    end
+
+    describe "#get_move_index" do
+      before(:each) do
+      end
+
+      it "returns the current move index" do
+        id = context.add_game(game)
+        cur_game = context.get_game(id)
+        cur_game.record_move(1, 'x')
+        context.save_game(id, cur_game)
+        context.get_move_index(id).should == 1
+        cur_game = context.get_game(id)
+        cur_game.record_move(2, 'o')
+        context.save_game(id, cur_game)
+        context.get_move_index(id).should == 2
       end
     end
   end

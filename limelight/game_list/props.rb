@@ -5,7 +5,7 @@ ttt do
 
   menu_button_row do
     game_list :text => "Select a game:"
-    game_list_dropwdown :players => "drop_down", :id => "game_list", :choices => TTT::Context.game_list
+    game_list_dropwdown :players => "drop_down", :id => "game_list", :choices => (context = TTT::Context.instance; context.setup = TTT::Setup; context.game_list)
   end
 
   row

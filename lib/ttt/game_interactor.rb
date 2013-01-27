@@ -74,6 +74,10 @@ module TTT
       game.initialize_history
     end
 
+    def get_history_length(game)
+      game.show_history.length
+    end
+
     def switch_player(game)
       game.switch_player
     end

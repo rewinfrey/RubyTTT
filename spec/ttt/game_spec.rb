@@ -173,5 +173,74 @@ module TTT
         game.board_arr.should == Array.new(9, 'a')
       end
     end
+
+    describe "#adjust_move_index" do
+      it "adjusts the game_history#move_traverser move_index" do
+        game.record_move(1, 'x')
+        game.history.move_traverser.move_index.should == 1
+        game.adjust_move_index(-1)
+        game.history.move_traverser.move_index.should == 0
+      end
+    end
+
+    describe "#initialize_history" do
+      it "resets the game_history to the length of the GameHistory#history array" do
+        game.record_move(1, 'x')
+        game.history.move_traverser.move_index.should == 1
+        game.adjust_move_index(-1)
+        game.history.move_traverser.move_index.should == 0
+        game.initialize_history
+        game.history.move_traverser.move_index.should == 1
+      end
+    end
+
+    describe "#get_history_board" do
+      it "returns the game board at the specified move number" do
+        game.record_move(0, 'o')
+        game.record_move(1, 'x')
+        game.record_move(2, 'x')
+        game.record_move(3, 'x')
+        game.record_move(4, 'x')
+        game.record_move(5, 'o')
+        game.record_move(6, 'o')
+        game.record_move(7, 'o')
+        game.record_move(8, 'o')
+        game.get_history_board(1).should == ['o', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        game.get_history_board(2).should == ['o', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        game.get_history_board(3).should == ['o', 'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ']
+        game.get_history_board(4).should == ['o', 'x', 'x', 'x', ' ', ' ', ' ', ' ', ' ']
+        game.get_history_board(5).should == ['o', 'x', 'x', 'x', 'x', ' ', ' ', ' ', ' ']
+        game.get_history_board(6).should == ['o', 'x', 'x', 'x', 'x', 'o', ' ', ' ', ' ']
+        game.get_history_board(7).should == ['o', 'x', 'x', 'x', 'x', 'o', 'o', ' ', ' ']
+        game.get_history_board(8).should == ['o', 'x', 'x', 'x', 'x', 'o', 'o', 'o', ' ']
+        game.get_history_board(9).should == ['o', 'x', 'x', 'x', 'x', 'o', 'o', 'o', 'o']
+      end
+    end
+
+    describe "#valid_move" do
+      before(:each) do
+        game.board.board = ['x', 'o', 'x', 'o', ' ', ' ', ' ', ' ', ' ']
+      end
+
+      it "returns true when a move is possible" do
+        game.valid_move?(4).should == true
+        game.valid_move?(5).should == true
+        game.valid_move?(6).should == true
+        game.valid_move?(7).should == true
+        game.valid_move?(8).should == true
+      end
+
+      it "returns false when a move the move's intended square has already been taken" do
+        game.valid_move?(0).should == false
+        game.valid_move?(1).should == false
+        game.valid_move?(2).should == false
+        game.valid_move?(3).should == false
+      end
+
+      it "returns false when input is not a number within 0 and the board length" do
+        game.valid_move?('z').should == false
+        game.valid_move?(123.123).should == false
+      end
+    end
   end
 end
