@@ -23,7 +23,7 @@ class TttGamesController < ApplicationController
     @web_game_presenter = WebGamePresenter.for(board: @game.board, id: cookies[:game_id])
     @web_game_history   = @context.get_history(cookies[:game_id])
     @id                 = cookies[:game_id]
-    flash[:notice], view_file = TttGame.process_game(cookies[:game_id], @context)
+    flash[:notice], view_file = TttGame.evaluate_game(cookies[:game_id], @context)
     render view_file
   end
 
@@ -37,20 +37,14 @@ class TttGamesController < ApplicationController
   end
 
   def move_history
-    @game               = @context.get_game(params[:id])
-    cookies[:game_id]   = params[:id] if @game
-    @web_game_history   = @context.get_history(cookies[:game_id])
-    @id                 = params[:id]
-
-    max_length          = TttGame.get_history_max_length(@game)
-
-    adjust_move_index_pointers(params[:index_diff].to_i, max_length)
-
-    history_board       = TttGame.get_history_board(@game, cookies[:move_index])
-
-    @web_game_presenter = WebGamePresenter.for(board: history_board, id: cookies[:game_id])
-    cookies[:last_id]   = cookies[:game_id]
-    flash[:notice], view_file = TttGame.process_game(cookies[:game_id], @context)
+    @game                     = @context.get_game(params[:id])
+    @id, cookies[:game_id]    = params[:id], params[:id]
+    @web_game_history         = @context.get_history(@id)
+    adjust_move_index_pointers(params[:index_diff].to_i)
+    @game.board.board         = TttGame.get_history_board(@game, cookies[:move_index])
+    @web_game_presenter       = WebGamePresenter.for(board: @game.board, id: cookies[:game_id])
+    cookies[:last_id]         = @id
+    flash[:notice], view_file = TttGame.evaluate_game(cookies[:game_id], @context)
     render view_file
   end
 
@@ -62,16 +56,17 @@ class TttGamesController < ApplicationController
   end
 
   def next_move
-    @context.ai_move(cookies[:game_id])
+    @context.ai_move(params[:id])
     redirect_to :action => "show"
   end
 
   private
-  def adjust_move_index_pointers(index_diff, max_length)
-    if cookies[:game_id] == cookies[:last_id]
-      cur_index = cookies[:move_index].to_i
-      temp_index = cur_index + index_diff
-      cur_index += index_diff if((max_length - temp_index.abs >= 0) && (temp_index <= 0))
+  def adjust_move_index_pointers(index_diff)
+    max_length = TttGame.get_history_length(cookies[:game_id], @context)
+    if cookies[:game_id]   == cookies[:last_id]
+      cur_index            = cookies[:move_index].to_i
+      temp_index           = cur_index + index_diff
+      cur_index            += index_diff if((max_length - temp_index.abs >= 0) && (temp_index <= 0))
       cookies[:move_index] = cur_index
     else
       cookies[:move_index] = index_diff.to_i
