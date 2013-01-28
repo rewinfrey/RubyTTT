@@ -31,7 +31,6 @@ module TTT
     def ai_move(id, game)
       game.next_move
       save_game(id, game)
-      game
     end
 
     def finished?(game)

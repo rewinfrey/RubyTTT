@@ -37,7 +37,7 @@ module CLI
       if valid_menu?(selection)
         selection
       else
-        generic_error_msg
+        error
         menu
       end
     end

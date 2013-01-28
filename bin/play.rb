@@ -5,7 +5,6 @@ require 'ttt/setup'
 require 'ttt/context'
 require 'cli/cli_game'
 
-setup         = TTT::Setup.new
 context       = TTT::Context.instance
 context.setup = TTT::Setup
-CLI::CLIGame.configure(context, $stdin, $stdout).play
+CLI::CLIGame.new(context, $stdin, $stdout).play

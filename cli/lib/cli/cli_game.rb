@@ -7,17 +7,18 @@ require 'cli/walk_history'
 
 module CLI
   class CLIGame
-    def self.configure(context, input, output)
-      @context   = context
-      @presenter = CLIPresenter.new(input, output)
-      self
+    attr_accessor :context, :presenter, :id, :games
+    def initialize(context, input, output)
+      self.context = context
+      self.presenter = CLIPresenter.new(input, output)
     end
 
-    def self.play
-      process_command(@presenter.menu)
+    def play
+      user_selection = @presenter.menu
+      process_command(user_selection)
     end
 
-    def self.process_command(selection)
+    def process_command(selection)
       case selection.chomp
       when "1" then init_game
       when "2" then game_list
@@ -27,115 +28,157 @@ module CLI
       end
     end
 
-    def self.init_game
+    def init_game
       @presenter.welcome_prompt
       player_select   = get_player_selection
       board_select    = get_board_selection
-      @game           = build_game(player_select, board_select)
-      @id             = @context.add_game(@game)
+      new_game        = build_game(player_select, board_select)
+      @id             = @context.add_game(new_game)
       play_game
     end
 
-    def self.get_player_selection
+    def get_player_selection
       PlayerSelection.new(@context.players, @presenter).process
     end
 
-    def self.get_board_selection
+    def get_board_selection
       BoardSelection.new(@context.boards, @presenter).process
     end
 
-    def self.build_game(pselect, bselect)
+    def build_game(pselect, bselect)
       @context.setup.new_game(player1: pselect.player1, player2: pselect.player2, board: bselect.board)
     end
 
-    def self.play_game
-      while @game.not_finished?
-        move_cycle
+    def play_game
+      while game.not_finished?
+       move_cycle
       end
+      game_over
+    end
+
+    def game_over
       walk_history
       play_again
     end
 
-    def self.move_cycle
-      @game = @context.get_game(@id)
-      @presenter.player_prompt(@game.board_arr, @game.show_history, @game.current_player)
+    def game
+      @context.get_game(@id)
+    end
+
+    def move_cycle
+      cur_game = game
+      player_prompt(cur_game)
       process_next_move
     end
 
-    def self.process_next_move
-      @context.ai_move(@id) if @game.ai_move?
-      move = @presenter.input if !@game.ai_move?
-      if @context.valid_move?(@id, move.to_i) && !@game.ai_move?
-        @context.update_game(@id, move.to_i, @game.current_player.side)
-      end
-      @game = @context.get_game(@id)
-      eval_board_state
-      play_game
+    def player_prompt(cur_game)
+      @presenter.player_prompt(cur_game.board.board, cur_game.show_history, cur_game.current_player)
     end
 
-    def self.eval_board_state
-      @presenter.process_winner(@game.board_arr, @game.show_history, @game.last_player) if @game.winner?
-      @presenter.process_draw(@game.board_arr, @game.show_history)                      if @game.finished? && !@game.winner?
-    end
-
-    def self.game_list
-      games = @context.game_list
-      if games.length == 0
-        @presenter.no_games
-        sleep 2
-        play
+    def process_next_move
+      if @context.ai_move?(@id)
+        @context.ai_move(@id)
       else
-        selection = @presenter.process_game_list(games)
-        if @game = @context.get_game(selection.chomp)
-          @id = selection.chomp
-          resume_game
+        move = get_next_move
+        if validate_move(move)
+          update_move(move)
         else
-          game_list
+          move_cycle
         end
       end
+      eval_board_state
     end
 
-    def self.select_game_prompt
-      view.select_game_prompt
+    def get_next_move
+      if game.ai_move?
+        @context.ai_move(@id)
+      else
+        @presenter.input
+      end
     end
 
-    def self.resume_game
-      @presenter.player_prompt(@game.board[], @game.show_history, @game.current_player)
+    def validate_move(move)
+      @context.valid_move?(@id, move.to_i)
+    end
+
+    def update_move(move)
+      @context.update_game(@id, move.to_i, game.current_player.side)
+    end
+
+    def eval_board_state
+      @presenter.process_winner(game.board_arr, game.show_history, game.last_player) if game.winner?
+      @presenter.process_draw(game.board_arr, game.show_history)                     if game.finished? && !game.winner?
+    end
+
+    def game_list
+      get_games
+      if @games
+        load_game
+      else
+        no_games
+      end
+    end
+
+    def get_games
+      @games = @context.game_list
+      @games = nil if @games.length == 0
+    end
+
+    def no_games
+      @presenter.no_games
+      sleep 1
+      play
+    end
+
+    def load_game
+      selection = @presenter.process_game_list(@games)
+      if @context.get_game(selection.chomp)
+        @id = selection.chomp
+        resume_game
+      else
+        game_list
+      end
+    end
+
+    def no_games
+      @presenter.no_games
+      sleep 1
+      play
+    end
+
+    def resume_game
+      @presenter.player_prompt(game.board[], game.show_history, game.current_player)
       eval_board_state
       play_game
     end
 
-    def self.game
-      @game
+    def game
+      @context.get_game(@id)
     end
 
-    def self.game=(args)
-      @game = args
-    end
-
-    def self.presenter=(args)
+    def presenter=(args)
       @presenter = args
     end
 
-    def self.presenter
+    def presenter
       @presenter
     end
 
-    def self.context=(args)
+    def context=(args)
       @context = args
     end
 
-    def self.context
+    def context
       @context
     end
 
-    def self.play_again
+    def play_again
       exit unless PlayAgain.new(@presenter).play_again?
       play
     end
 
-    def self.walk_history
-      @walk_history = WalkHistory.new(@presenter, @game)
+    def walk_history
+      @walk_history = WalkHistory.new(@presenter, game)
       @walk_history.post_game_msg
       play_again
     end

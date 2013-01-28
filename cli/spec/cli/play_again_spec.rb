@@ -18,21 +18,21 @@ module CLI
 
     describe "#play_again_msg" do
       it "sends a play_again_msg message to gameio" do
-        againio.presenter.should_receive(:play_again_msg)
+        presenter.should_receive(:play_again_msg)
         againio.play_again_msg
       end
     end
 
     describe "#play_again?" do
       it "prompts the user to play again" do
-        againio.presenter.io.instream = StringIO.new("n\n")
-        againio.presenter.io.outstream.string.split("\n").include? "Play again (y or n)?"
+        presenter.io.instream = StringIO.new("n\n")
+        presenter.io.outstream.string.split("\n").include? "Play again (y or n)?"
       end
 
       it "prompts the user to re-enter input when invalid input is received" do
-        againio.presenter.io.instream = StringIO.new("i\nn\n")
+        presenter.io.instream = StringIO.new("i\nn\n")
         againio.play_again?
-        againio.presenter.io.outstream.string.split("\n").include? "I'm sorry, I didn't understand you. Please try again."
+        presenter.io.outstream.string.split("\n").include? "I'm sorry, I didn't understand you. Please try again."
       end
     end
   end

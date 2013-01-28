@@ -6,5 +6,10 @@ module TTT
     end
 
     def move; end
+
+    def ==(other_player)
+      self.class == other_player.class &&
+        side == other_player.side
+    end
   end
 end

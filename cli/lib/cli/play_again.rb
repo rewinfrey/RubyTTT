@@ -1,6 +1,5 @@
 module CLI
   class PlayAgain
-    attr_accessor :presenter
 
     def initialize(presenter)
       self.presenter = presenter
@@ -32,5 +31,8 @@ module CLI
     def play_again_msg
       presenter.play_again_msg
     end
+
+    private
+    attr_accessor :presenter
   end
 end

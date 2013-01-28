@@ -22,6 +22,8 @@ module CLI
     end
 
     def walk_msg
+      presenter.clear
+      presenter.output_board(build_board)
       presenter.walk_msg
       diff_index = presenter.input.chomp
       case diff_index
@@ -36,8 +38,6 @@ module CLI
 
     def walk_history(diff_index)
       move_traverser.adjust_move_index(diff_index)
-      presenter.clear
-      presenter.output_board(build_board)
       walk_msg
     end
 
