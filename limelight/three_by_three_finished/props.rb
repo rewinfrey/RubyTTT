@@ -1,5 +1,1 @@
-move_button_row do
-  left_button :players => "button", :id => "left_button", :text => "Back"
-  right_button :players => "button", :id => "right_button", :text => "Next"
-end
-__install 'partials/title_history_partial.rb', :text => "3x3", :n => 9, :c => 1
+__install 'partials/move_history_partial.rb', :text => "3x3", :n => 9, :c => 1

@@ -107,6 +107,7 @@ class GamePlayscript
 
   def display_move_history
     history = production.context.get_history(@game_id)
+    @context.find_by_id("move_history").text = "Move History"
     result_string = ''
     history.each do |value|
       @context.find_by_id("move_history").text += "\n#{value.side} #{value.move}"
