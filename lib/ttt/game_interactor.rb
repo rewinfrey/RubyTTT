@@ -65,6 +65,15 @@ module TTT
       game.show_history
     end
 
+    def get_move_traverser(game)
+      game.history.move_traverser
+    end
+
+    def save_move_traverser(id, game, move_traverser)
+      game.history.move_traverser = move_traverser
+      save_game(id, game)
+    end
+
     def get_history_board(game)
       game.get_history_board
     end

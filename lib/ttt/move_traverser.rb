@@ -2,10 +2,11 @@ require 'yaml'
 
 module TTT
   class MoveTraverser
-    attr_accessor :game_history, :move_index
+    attr_accessor :game_history, :move_index, :current_index
     def initialize(game_history)
-      self.move_index   = 0
-      self.game_history = game_history
+      self.move_index    = 0
+      self.game_history  = game_history
+      self.current_index = 0
     end
 
     def initialize_history

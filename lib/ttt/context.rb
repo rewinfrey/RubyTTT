@@ -141,6 +141,20 @@ module TTT
       end
     end
 
+    def get_move_traverser(id)
+      if game = game_interactor.get_game(id)
+        game_interactor.get_move_traverser(game)
+      else
+        nil
+      end
+    end
+
+    def save_move_traverser(id, move_traverser)
+      if game = game_interactor.get_game(id)
+        game_interactor.save_move_traverser(id, game, move_traverser)
+      end
+    end
+
     def initialize_history(id)
       if game = game_interactor.get_game(id)
         game_interactor.initialize_history(game)

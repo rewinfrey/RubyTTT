@@ -7,7 +7,7 @@ module TTT
       port            = options.fetch(:port, 8098)
       http_backend    = options.fetch(:http_backend, :Excon)
       self.bucket     = options.fetch(:bucket)
-      self.client     = Riak::Client.new(:http_port => port, :http_backend => http_backend)
+      self.client     = Riak::Client.new(:http_port => port)
       self.cur_id     = client[bucket].keys.length.to_s
     end
 
