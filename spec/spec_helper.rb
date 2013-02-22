@@ -1,7 +1,7 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'simplecov'
-SimpleCov.start
+#require 'simplecov'
+#SimpleCov.start
 require 'ttt/ai'
 require 'ttt/player'
 require 'ttt/game'

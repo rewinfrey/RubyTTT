@@ -3,29 +3,39 @@ require 'ttt/setup'
 require 'rake'
 require 'rake/testtask'
 
+task :start do
+  system "clear"
+  puts "Running all specs..."
+end
+
 desc "Running Core Lib specs"
 task :lib_specs do
-  system 'bash -l -c "rvm use default"'
-  system('rspec spec')
+  puts "\nRunning Lib specs"
+  system 'bundle exec rspec spec'
 end
 
 desc "Running CLI specs"
 task :cli_specs do
-  system 'bash -l -c "cd cli; rvm use default; rspec spec"'
+  system "clear"
+  puts "Running CLI specs"
+  system "bash -l -c 'cd lib/ttt/interfaces/cli; bundle exec rspec spec'"
+  puts
 end
 
 desc "Running Rails specs"
 task :rails_specs do
-  system('cd rails; rake spec; cd ..')
+  system "clear"
+  puts "Running Rails specs"
+  system "bash -l -c 'cd lib/ttt/interfaces/rails; bundle exec rake db:migrate; bundle exec rspec spec'"
 end
 
 desc "Running Limelight Specs"
 task :limelight_specs do
-  system "bash -l -c 'cd limelight; rspec spec'"
+  puts "Running Limelight specs"
+  system "bash -l -c 'cd lib/ttt/interfaces/limelight; bundle exec rspec spec'"
 end
 
-task :all_specs => [:lib_specs, :cli_specs, :rails_specs, :limelight_specs] do
-  "Running all specs"
+task :all_specs => [:start, :lib_specs, :cli_specs, :rails_specs, :limelight_specs] do
 end
 
 task :launch_riak do

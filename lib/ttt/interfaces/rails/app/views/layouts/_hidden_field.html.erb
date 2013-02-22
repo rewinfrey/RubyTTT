@@ -1,0 +1,5 @@
+<div id="current_player" game_id="<%= @id %>">
+  <% if @game.current_player.class.to_s =~ (/ai/i) && !@finished %>
+    true
+  <% end %>
+</div>

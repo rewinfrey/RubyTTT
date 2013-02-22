@@ -131,7 +131,8 @@ module TTT
         game.player1 = AIEasy.new(:side => 'x')
         game.current_player = game.player1
         id = context.add_game(game)
-        @updated_game = context.ai_move(id)
+        context.ai_move(id)
+        @updated_game = context.get_game(id)
       end
 
       it "gets an updated game with the board containing the ai move" do
